@@ -1,0 +1,291 @@
+
+
+================================================================
+== Vivado HLS Report for 'frameSIPO'
+================================================================
+* Date:           Tue Aug 30 14:22:45 2016
+
+* Version:        2016.2 (Build 1577090 on Thu Jun 02 16:59:10 MDT 2016)
+* Project:        pie_hls
+* Solution:       solution1
+* Product family: zynq
+* Target device:  xc7z020clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |   8.00|      5.85|        1.00|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-----+-----+-----+----------+
+    |  Latency  |  Interval | Pipeline |
+    | min | max | min | max |   Type   |
+    +-----+-----+-----+-----+----------+
+    |    0|    0|    1|    1| function |
+    +-----+-----+-----+-----+----------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 1
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 1
+HasVarLatency: 0
+IsPipeline: 1
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 1, depth = 1
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states: 1
+* Pipeline: 1
+  Pipeline-0: II = 1, D = 1, States = { 1 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+* FSM state operations: 
+
+ <State 1>: 5.85ns
+ST_1: stg_2 [1/1] 0.00ns
+:0  call void (...)* @_ssdm_op_SpecBitsMap(i8* %inData_V_data_V), !map !47
+
+ST_1: stg_3 [1/1] 0.00ns
+:1  call void (...)* @_ssdm_op_SpecBitsMap(i128* %inData_V_user_V), !map !51
+
+ST_1: stg_4 [1/1] 0.00ns
+:2  call void (...)* @_ssdm_op_SpecBitsMap(i8* %outData_V_data_V), !map !55
+
+ST_1: stg_5 [1/1] 0.00ns
+:3  call void (...)* @_ssdm_op_SpecBitsMap(i128* %outData_V_user_V), !map !59
+
+ST_1: stg_6 [1/1] 0.00ns
+:4  call void (...)* @_ssdm_op_SpecBitsMap(i1* %sfd_detected), !map !63
+
+ST_1: stg_7 [1/1] 0.00ns
+:5  call void (...)* @_ssdm_op_SpecBitsMap(i1* %src_addr), !map !67
+
+ST_1: stg_8 [1/1] 0.00ns
+:6  call void (...)* @_ssdm_op_SpecBitsMap(i1* %dest_addr), !map !71
+
+ST_1: stg_9 [1/1] 0.00ns
+:7  call void (...)* @_ssdm_op_SpecBitsMap(i1* %ethertype), !map !75
+
+ST_1: stg_10 [1/1] 0.00ns
+:8  call void (...)* @_ssdm_op_SpecBitsMap(i1* %ping), !map !79
+
+ST_1: stg_11 [1/1] 0.00ns
+:9  call void (...)* @_ssdm_op_SpecTopModule([10 x i8]* @frameSIPO_str) nounwind
+
+ST_1: stg_12 [1/1] 0.00ns
+:10  call void (...)* @_ssdm_op_SpecInterface(i8* %inData_V_data_V, i128* %inData_V_user_V, [5 x i8]* @p_str, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str1, [1 x i8]* @p_str1, [1 x i8]* @p_str1, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str1) nounwind
+
+ST_1: stg_13 [1/1] 0.00ns
+:11  call void (...)* @_ssdm_op_SpecInterface(i8* %outData_V_data_V, i128* %outData_V_user_V, [5 x i8]* @p_str, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str1, [1 x i8]* @p_str1, [1 x i8]* @p_str1, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str1) nounwind
+
+ST_1: stg_14 [1/1] 0.00ns
+:12  call void (...)* @_ssdm_op_SpecPipeline(i32 1, i32 2, i32 1, i32 0, [1 x i8]* @p_str1) nounwind
+
+ST_1: tmp [1/1] 0.00ns
+:13  %tmp = call i1 @_ssdm_op_NbReadReq.axis.i8P.i128P(i8* %inData_V_data_V, i128* %inData_V_user_V, i32 1)
+
+ST_1: stg_16 [1/1] 0.00ns
+:14  br i1 %tmp, label %1, label %._crit_edge
+
+ST_1: CNT_STATE_load [1/1] 0.00ns
+:0  %CNT_STATE_load = load i1* @CNT_STATE, align 1
+
+ST_1: byte_cnt_load [1/1] 0.00ns
+:1  %byte_cnt_load = load i32* @byte_cnt, align 4
+
+ST_1: empty [1/1] 0.00ns
+:2  %empty = call { i8, i128 } @_ssdm_op_Read.axis.volatile.i8P.i128P(i8* %inData_V_data_V, i128* %inData_V_user_V)
+
+ST_1: tmp_data_V [1/1] 0.00ns
+:3  %tmp_data_V = extractvalue { i8, i128 } %empty, 0
+
+ST_1: stg_21 [1/1] 0.00ns
+:4  br i1 %CNT_STATE_load, label %2, label %._crit_edge20
+
+ST_1: stg_22 [1/1] 1.57ns
+._crit_edge20:0  store i32 0, i32* @byte_cnt, align 4
+
+ST_1: stg_23 [1/1] 0.00ns
+._crit_edge20:1  call void @_ssdm_op_Write.ap_auto.i1P(i1* %src_addr, i1 false)
+
+ST_1: stg_24 [1/1] 0.00ns
+._crit_edge20:2  call void @_ssdm_op_Write.ap_auto.i1P(i1* %dest_addr, i1 false)
+
+ST_1: stg_25 [1/1] 0.00ns
+._crit_edge20:3  call void @_ssdm_op_Write.ap_auto.i1P(i1* %ethertype, i1 false)
+
+ST_1: tmp_3 [1/1] 2.00ns
+._crit_edge20:4  %tmp_3 = icmp eq i8 %tmp_data_V, -43
+
+ST_1: stg_27 [1/1] 1.57ns
+._crit_edge20:5  store i1 %tmp_3, i1* @CNT_STATE, align 1
+
+ST_1: stg_28 [1/1] 1.57ns
+._crit_edge20:6  br label %._crit_edge19
+
+ST_1: tmp_5 [1/1] 2.44ns
+:0  %tmp_5 = add nsw i32 %byte_cnt_load, 1
+
+ST_1: stg_30 [1/1] 1.57ns
+:1  store i32 %tmp_5, i32* @byte_cnt, align 4
+
+ST_1: tmp_6 [1/1] 2.52ns
+:2  %tmp_6 = icmp slt i32 %tmp_5, 7
+
+ST_1: stg_32 [1/1] 0.00ns
+:3  br i1 %tmp_6, label %3, label %4
+
+ST_1: tmp_7 [1/1] 2.52ns
+:0  %tmp_7 = icmp slt i32 %tmp_5, 13
+
+ST_1: stg_34 [1/1] 0.00ns
+:1  br i1 %tmp_7, label %5, label %6
+
+ST_1: tmp_8 [1/1] 2.52ns
+:0  %tmp_8 = icmp eq i32 %tmp_5, 13
+
+ST_1: stg_36 [1/1] 0.00ns
+:1  br i1 %tmp_8, label %7, label %8
+
+ST_1: tmp_2 [1/1] 2.52ns
+:0  %tmp_2 = icmp eq i32 %tmp_5, 14
+
+ST_1: stg_38 [1/1] 0.00ns
+:1  br i1 %tmp_2, label %9, label %10
+
+ST_1: stg_39 [1/1] 0.00ns
+:0  call void @_ssdm_op_Write.ap_auto.i1P(i1* %src_addr, i1 false)
+
+ST_1: stg_40 [1/1] 0.00ns
+:1  call void @_ssdm_op_Write.ap_auto.i1P(i1* %dest_addr, i1 false)
+
+ST_1: stg_41 [1/1] 0.00ns
+:2  call void @_ssdm_op_Write.ap_auto.i1P(i1* %ethertype, i1 false)
+
+ST_1: stg_42 [1/1] 1.57ns
+:3  store i1 false, i1* @CNT_STATE, align 1
+
+ST_1: stg_43 [1/1] 1.57ns
+:4  br label %._crit_edge19
+
+ST_1: stg_44 [1/1] 0.00ns
+:0  call void @_ssdm_op_Write.ap_auto.i1P(i1* %ethertype, i1 true)
+
+ST_1: tmp_4 [1/1] 0.00ns
+:1  %tmp_4 = zext i8 %tmp_data_V to i16
+
+ST_1: stg_46 [1/1] 1.57ns
+:2  br label %._crit_edge19
+
+ST_1: stg_47 [1/1] 0.00ns
+:0  call void @_ssdm_op_Write.ap_auto.i1P(i1* %ethertype, i1 true)
+
+ST_1: tmp_s [1/1] 0.00ns
+:1  %tmp_s = call i16 @_ssdm_op_BitConcatenate.i16.i8.i8(i8 %tmp_data_V, i8 0)
+
+ST_1: stg_49 [1/1] 1.57ns
+:2  br label %._crit_edge19
+
+ST_1: stg_50 [1/1] 0.00ns
+:0  call void @_ssdm_op_Write.ap_auto.i1P(i1* %src_addr, i1 true)
+
+ST_1: stg_51 [1/1] 1.57ns
+:1  br label %._crit_edge19
+
+ST_1: stg_52 [1/1] 0.00ns
+:0  call void @_ssdm_op_Write.ap_auto.i1P(i1* %dest_addr, i1 true)
+
+ST_1: stg_53 [1/1] 1.57ns
+:1  br label %._crit_edge19
+
+ST_1: sfd_detected_flag_1 [1/1] 0.00ns
+._crit_edge19:0  %sfd_detected_flag_1 = phi i1 [ false, %3 ], [ false, %5 ], [ false, %7 ], [ false, %9 ], [ true, %10 ], [ true, %._crit_edge20 ]
+
+ST_1: sfd_detected_new_1 [1/1] 0.00ns
+._crit_edge19:1  %sfd_detected_new_1 = phi i1 [ undef, %3 ], [ undef, %5 ], [ undef, %7 ], [ undef, %9 ], [ false, %10 ], [ %tmp_3, %._crit_edge20 ]
+
+ST_1: packet_type_load_1 [1/1] 0.00ns (grouped into LUT with out node tmp_1)
+._crit_edge19:2  %packet_type_load_1 = phi i16 [ 0, %3 ], [ 0, %5 ], [ %tmp_s, %7 ], [ %tmp_4, %9 ], [ 0, %10 ], [ 0, %._crit_edge20 ]
+
+ST_1: tmp_1 [1/1] 2.28ns (out node of the LUT)
+._crit_edge19:3  %tmp_1 = icmp eq i16 %packet_type_load_1, 2048
+
+ST_1: stg_58 [1/1] 0.00ns
+._crit_edge19:4  call void @_ssdm_op_Write.ap_auto.i1P(i1* %ping, i1 %tmp_1)
+
+ST_1: stg_59 [1/1] 0.00ns
+._crit_edge19:5  br i1 %sfd_detected_flag_1, label %mergeST, label %._crit_edge19.new
+
+ST_1: stg_60 [1/1] 0.00ns
+mergeST:0  call void @_ssdm_op_Write.ap_auto.i1P(i1* %sfd_detected, i1 %sfd_detected_new_1)
+
+ST_1: stg_61 [1/1] 0.00ns
+mergeST:1  br label %._crit_edge19.new
+
+ST_1: stg_62 [1/1] 0.00ns
+._crit_edge19.new:0  br label %._crit_edge
+
+ST_1: stg_63 [1/1] 0.00ns
+._crit_edge:0  ret void
+
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 8ns, clock uncertainty: 1ns.
+
+ No timing violations. 
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

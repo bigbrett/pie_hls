@@ -1,0 +1,19 @@
+
+
+Implementation tool: Xilinx Vivado v.2016.2
+Project:             pie_hls
+Solution:            solution1
+Device target:       xc7z020clg484-1
+Report date:         Tue Aug 30 14:24:12 EDT 2016
+
+#=== Resource usage ===
+SLICE:           36
+LUT:             66
+FF:              33
+DSP:              0
+BRAM:             0
+SRL:              0
+#=== Final timing ===
+CP required:    8.000
+CP achieved:    6.107
+Timing met

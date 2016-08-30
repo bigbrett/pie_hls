@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xd:acceleratorMap xmlns:xd="http://www.xilinx.com/xidane" xd:functionName="frameSIPO" xd:componentRef="frameSIPO" xd:initiationInterval="1" xd:clockPeriod="8.000000" xd:sequential="true" xd:hostMachine="64" xd:reset="control">
+  <xd:controlReg xd:name="control" xd:interfaceRef="ap_ctrl" xd:busTypeRef="acc_handshake" xd:type="acc_handshake"/>
+  <xd:arg xd:name="inData.data" xd:originalName="inData" xd:direction="in" xd:interfaceRef="inData" xd:busTypeRef="axis" xd:dataWidth="8"/>
+  <xd:arg xd:name="inData.user" xd:originalName="inData" xd:direction="in" xd:interfaceRef="inData" xd:busTypeRef="axis" xd:dataWidth="128"/>
+  <xd:arg xd:name="outData.data" xd:originalName="outData" xd:direction="in" xd:interfaceRef="outData" xd:busTypeRef="axis" xd:dataWidth="8"/>
+  <xd:arg xd:name="outData.user" xd:originalName="outData" xd:direction="in" xd:interfaceRef="outData" xd:busTypeRef="axis" xd:dataWidth="128"/>
+  <xd:arg xd:name="*(sfd_detected)" xd:originalName="sfd_detected" xd:direction="out" xd:interfaceRef="sfd_detected" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="1"/>
+  <xd:arg xd:name="*(src_addr)" xd:originalName="src_addr" xd:direction="out" xd:interfaceRef="src_addr" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="1"/>
+  <xd:arg xd:name="*(dest_addr)" xd:originalName="dest_addr" xd:direction="out" xd:interfaceRef="dest_addr" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="1"/>
+  <xd:arg xd:name="*(ethertype)" xd:originalName="ethertype" xd:direction="out" xd:interfaceRef="ethertype" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="1"/>
+  <xd:arg xd:name="*(ping)" xd:originalName="ping" xd:direction="out" xd:interfaceRef="ping" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="1"/>
+  <xd:latencyEstimates xd:best-case="0" xd:worst-case="0" xd:average-case="0"/>
+  <xd:resourceEstimates xd:LUT="145" xd:FF="34" xd:BRAM="0" xd:DSP="0"/>
+</xd:acceleratorMap>

@@ -1,0 +1,393 @@
+#-----------------------------------------------------------
+# Vivado v2016.2 (64-bit)
+# SW Build 1577090 on Thu Jun  2 16:32:35 MDT 2016
+# IP Build 1577682 on Fri Jun  3 12:00:54 MDT 2016
+# Start of session at: Tue Aug 30 14:23:07 2016
+# Process ID: 20688
+# Current directory: /home/brett/workspace/Vivado_WS/pie_hls/solution1/impl/vhdl/project.runs/synth_1
+# Command line: vivado -log frameSIPO.vds -mode batch -messageDb vivado.pb -notrace -source frameSIPO.tcl
+# Log file: /home/brett/workspace/Vivado_WS/pie_hls/solution1/impl/vhdl/project.runs/synth_1/frameSIPO.vds
+# Journal file: /home/brett/workspace/Vivado_WS/pie_hls/solution1/impl/vhdl/project.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
+source frameSIPO.tcl -notrace
+Command: synth_design -top frameSIPO -part xc7z020clg484-1 -no_iobuf -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 20706 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1010.145 ; gain = 127.137 ; free physical = 9220 ; free virtual = 59493
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'frameSIPO' [/home/brett/workspace/Vivado_WS/pie_hls/solution1/impl/vhdl/frameSIPO.vhd:41]
+INFO: [Synth 8-5534] Detected attribute (* fsm_encoding = "none" *) [/home/brett/workspace/Vivado_WS/pie_hls/solution1/impl/vhdl/frameSIPO.vhd:61]
+INFO: [Synth 8-256] done synthesizing module 'frameSIPO' (1#1) [/home/brett/workspace/Vivado_WS/pie_hls/solution1/impl/vhdl/frameSIPO.vhd:41]
+WARNING: [Synth 8-3917] design frameSIPO has port outData_TREADY driven by constant 0
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[127]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[126]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[125]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[124]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[123]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[122]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[121]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[120]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[119]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[118]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[117]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[116]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[115]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[114]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[113]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[112]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[111]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[110]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[109]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[108]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[107]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[106]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[105]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[104]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[103]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[102]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[101]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[100]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[99]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[98]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[97]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[96]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[95]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[94]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[93]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[92]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[91]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[90]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[89]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[88]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[87]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[86]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[85]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[84]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[83]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[82]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[81]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[80]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[79]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[78]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[77]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[76]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[75]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[74]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[73]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[72]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[71]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[70]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[69]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[68]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[67]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[66]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[65]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[64]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[63]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[62]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[61]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[60]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[59]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[58]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[57]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[56]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[55]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[54]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[53]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[52]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[51]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[50]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[49]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[48]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[47]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[46]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[45]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[44]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[43]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[42]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[41]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[40]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[39]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[38]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[37]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[36]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[35]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[34]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[33]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[32]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[31]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[30]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[29]
+WARNING: [Synth 8-3331] design frameSIPO has unconnected port inData_TUSER[28]
+INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1050.590 ; gain = 167.582 ; free physical = 9178 ; free virtual = 59451
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1050.590 ; gain = 167.582 ; free physical = 9178 ; free virtual = 59451
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7z020clg484-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/brett/workspace/Vivado_WS/pie_hls/solution1/impl/vhdl/frameSIPO.xdc]
+Finished Parsing XDC File [/home/brett/workspace/Vivado_WS/pie_hls/solution1/impl/vhdl/frameSIPO.xdc]
+Completed Processing XDC Constraints
+
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 1415.137 ; gain = 0.004 ; free physical = 8967 ; free virtual = 59240
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 1415.137 ; gain = 532.129 ; free physical = 8966 ; free virtual = 59239
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg484-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 1415.137 ; gain = 532.129 ; free physical = 8966 ; free virtual = 59239
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 1415.137 ; gain = 532.129 ; free physical = 8966 ; free virtual = 59239
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5546] ROM "tmp_3_fu_214_p2" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ping" won't be mapped to RAM because it is too sparse
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 1415.137 ; gain = 532.129 ; free physical = 8956 ; free virtual = 59229
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
++---Registers : 
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module frameSIPO 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
++---Registers : 
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+Start Parallel Synthesis Optimization  : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 1415.137 ; gain = 532.129 ; free physical = 8956 ; free virtual = 59229
+---------------------------------------------------------------------------------
+Start Cross Boundary Optimization
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5546] ROM "tmp_3_fu_214_p2" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ping" won't be mapped to RAM because it is too sparse
+WARNING: [Synth 8-3917] design frameSIPO has port outData_TREADY driven by constant 0
+---------------------------------------------------------------------------------
+Finished Cross Boundary Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 1415.137 ; gain = 532.129 ; free physical = 8956 ; free virtual = 59229
+---------------------------------------------------------------------------------
+Finished Parallel Reinference  : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 1415.137 ; gain = 532.129 ; free physical = 8956 ; free virtual = 59229
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Area Optimization
+---------------------------------------------------------------------------------
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\ap_CS_fsm_reg[0] )
+WARNING: [Synth 8-3332] Sequential element (ap_CS_fsm_reg[0]) is unused and will be removed from module frameSIPO.
+---------------------------------------------------------------------------------
+Finished Area Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 1415.137 ; gain = 532.129 ; free physical = 8944 ; free virtual = 59217
+---------------------------------------------------------------------------------
+Finished Parallel Area Optimization  : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 1415.137 ; gain = 532.129 ; free physical = 8944 ; free virtual = 59217
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 1415.137 ; gain = 532.129 ; free physical = 8961 ; free virtual = 59224
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 1415.137 ; gain = 532.129 ; free physical = 8954 ; free virtual = 59218
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 1415.137 ; gain = 532.129 ; free physical = 8949 ; free virtual = 59213
+---------------------------------------------------------------------------------
+Finished Parallel Technology Mapping Optimization  : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 1415.137 ; gain = 532.129 ; free physical = 8949 ; free virtual = 59213
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+Finished Parallel Synthesis Optimization  : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 1415.137 ; gain = 532.129 ; free physical = 8949 ; free virtual = 59213
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1415.137 ; gain = 532.129 ; free physical = 8949 ; free virtual = 59213
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1415.137 ; gain = 532.129 ; free physical = 8949 ; free virtual = 59213
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1415.137 ; gain = 532.129 ; free physical = 8949 ; free virtual = 59213
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1415.137 ; gain = 532.129 ; free physical = 8949 ; free virtual = 59213
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1415.137 ; gain = 532.129 ; free physical = 8949 ; free virtual = 59213
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1415.137 ; gain = 532.129 ; free physical = 8949 ; free virtual = 59213
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |CARRY4 |    24|
+|2     |LUT1   |    64|
+|3     |LUT2   |    41|
+|4     |LUT3   |     2|
+|5     |LUT4   |    11|
+|6     |LUT5   |     4|
+|7     |LUT6   |    14|
+|8     |FDRE   |    33|
++------+-------+------+
+
+Report Instance Areas: 
++------+---------+-------+------+
+|      |Instance |Module |Cells |
++------+---------+-------+------+
+|1     |top      |       |   193|
++------+---------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1415.137 ; gain = 532.129 ; free physical = 8949 ; free virtual = 59213
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 267 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1415.137 ; gain = 80.441 ; free physical = 8948 ; free virtual = 59212
+Synthesis Optimization Complete : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1415.137 ; gain = 532.129 ; free physical = 8948 ; free virtual = 59212
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 24 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+20 Infos, 103 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1415.137 ; gain = 457.570 ; free physical = 8950 ; free virtual = 59214
+report_utilization: Time (s): cpu = 00:00:00.05 ; elapsed = 00:00:00.07 . Memory (MB): peak = 1447.152 ; gain = 0.000 ; free physical = 8949 ; free virtual = 59212
+INFO: [Common 17-206] Exiting Vivado at Tue Aug 30 14:23:29 2016...
