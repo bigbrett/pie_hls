@@ -49837,7 +49837,7 @@ void frameSIPO(stream<axiByte> &inData,
       uint8_t* header,
       uint1* livewire);
 
-static ap_uint<16> packet_length;
+static int packet_length;
 #4 "pie_hls/solution1/frameSIPO.cpp" 2
 
 void frameSIPO(stream<axiByte> &inData,
@@ -49855,7 +49855,7 @@ _ssdm_op_SpecPipeline(1, 2, 1, 0, "");
 //	static ap_uint<48> src_mac_addr = 0;
 //	static ap_uint<48> dest_mac_addr = 0;
 //	static ap_uint<16> packet_type = 0;
- static ap_uint<16> packet_length = 0;
+ //static int packet_length;
 
  bool sfd_detected = 0;
 
@@ -49865,6 +49865,8 @@ _ssdm_op_SpecPipeline(1, 2, 1, 0, "");
   {
   case WAIT:
    inData.read(curr_byte);
+   packet_length = 0;
+   *header = 0;
    *livewire = 0;
 
    if (curr_byte.data == 0xd5)
@@ -49887,47 +49889,56 @@ _ssdm_op_SpecPipeline(1, 2, 1, 0, "");
    if (byte_cnt <= 6)
    {
     *header = 0b01000000;
+    packet_length = 0;
     CNT_STATE = COUNT;
    }
    else if (byte_cnt <= 12)
    {
     *header = 0b00100000;
+    packet_length = 0;
     CNT_STATE = COUNT;
    }
    else if (byte_cnt == 13)
    {
     *header = 0b00010000;
-//				packet_type.range(15,8) = curr_byte.data;
+    packet_length = 0;
     CNT_STATE = COUNT;
    }
    else if (byte_cnt == 14)
    {
     *header = 0b00001000;
-//				packet_type.range(7,0) = curr_byte.data;
+    packet_length = 0;
     CNT_STATE = COUNT;
    }
    else if (byte_cnt < 17)
+   {
     *header = 0b00000100;
+    packet_length = 0;
+   }
    else if (byte_cnt == 17)
    {
     *header = 0xFF;
-    packet_length.range(15,8) = curr_byte.data;
+//				packet_length.range(15,8) = curr_byte.data;
+    packet_length = 0xFF;
     CNT_STATE = COUNT;
    }
    else if (byte_cnt == 18)
    {
     *header = 0xFF;
-    packet_length.range(7,0) = curr_byte.data;
+//				packet_length.range(7,0) = curr_byte.data;
+    packet_length = 0xFF;
     CNT_STATE = COUNT;
    }
    else if (byte_cnt < 64)
    {
     *header = 0b00000010;
+    packet_length = 0;
     CNT_STATE = COUNT;
    }
    else
    {
     *header = 0x1;
+    packet_length = 0;
     CNT_STATE = WAIT;
    }
    break;

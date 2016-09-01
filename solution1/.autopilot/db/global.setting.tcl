@@ -7,7 +7,7 @@ set PortClockMap {}
 set CombLogicFlag 0
 set PipelineFlag 1
 set DataflowTaskPipelineFlag  1
-set TrivialPipelineFlag 1
+set TrivialPipelineFlag 0
 set noPortSwitchingFlag 0
 set FloatingPointFlag 0
 set FftOrFirFlag 0
@@ -44,7 +44,7 @@ set TargetInfo "xc7z020:clg484:-1"
 set SourceFiles {sc {} c frameSIPO.cpp}
 set SourceFlags {sc {} c {{}}}
 set DirectiveFile {/home/brett/workspace/Vivado_WS/pie_hls/solution1/solution1.directive}
-set TBFiles {verilog pie_tb.cpp bc pie_tb.cpp vhdl pie_tb.cpp sc pie_tb.cpp cas pie_tb.cpp c {}}
+set TBFiles {verilog {pie_tb.cpp ../../../../Desktop/outData.txt ../../../../Desktop/myfile.dat} bc {pie_tb.cpp ../../../../Desktop/outData.txt ../../../../Desktop/myfile.dat} vhdl {pie_tb.cpp ../../../../Desktop/outData.txt ../../../../Desktop/myfile.dat} sc {pie_tb.cpp ../../../../Desktop/outData.txt ../../../../Desktop/myfile.dat} cas {pie_tb.cpp ../../../../Desktop/outData.txt ../../../../Desktop/myfile.dat} c {}}
 set SpecLanguage "C"
 set TVInFiles {bc {} c {} sc {} cas {} vhdl {} verilog {}}
 set TVOutFiles {bc {} c {} sc {} cas {} vhdl {} verilog {}}

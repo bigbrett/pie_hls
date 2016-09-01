@@ -2,6 +2,8 @@
     <files>
         <file name="pie_hls/solution1/frameSIPO.hpp" sc="0" tb="false" cflags=""/>
         <file name="pie_hls/solution1/frameSIPO.cpp" sc="0" tb="false" cflags=""/>
+        <file name="../../../../Desktop/myfile.dat" sc="0" tb="1" cflags=""/>
+        <file name="../../../../Desktop/outData.txt" sc="0" tb="1" cflags=""/>
         <file name="../solution1/pie_tb.cpp" sc="0" tb="1" cflags=""/>
     </files>
     <includePaths/>

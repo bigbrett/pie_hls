@@ -11,10 +11,12 @@ set C_TypeInfoList {{
 set moduleName frameSIPO
 set isCombinational 0
 set isDatapathOnly 0
-set isPipelined 0
-set pipeline_type function
+set isPipelined 1
+set pipeline_type function_flushable
 set FunctionProtocol ap_ctrl_hs
-set isOneStateSeq 1
+set isOneStateSeq 0
+set pipeII 1
+set pipeLatency 1
 set C_modelName {frameSIPO}
 set C_modelType { void 0 }
 set C_modelArgList {
@@ -37,8 +39,8 @@ set portList {
 	{ ap_done sc_out sc_logic 1 predone -1 } 
 	{ ap_idle sc_out sc_logic 1 done -1 } 
 	{ ap_ready sc_out sc_logic 1 ready -1 } 
-	{ inData_TDATA sc_in sc_lv 8 signal 0 } 
 	{ inData_TVALID sc_in sc_logic 1 invld 1 } 
+	{ inData_TDATA sc_in sc_lv 8 signal 0 } 
 	{ inData_TREADY sc_out sc_logic 1 inacc 1 } 
 	{ inData_TUSER sc_in sc_lv 2 signal 1 } 
 	{ header sc_out sc_lv 8 signal 2 } 
@@ -53,8 +55,8 @@ set NewPortList {[
  	{ "name": "ap_done", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "predone", "bundle":{"name": "ap_done", "role": "default" }} , 
  	{ "name": "ap_idle", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "done", "bundle":{"name": "ap_idle", "role": "default" }} , 
  	{ "name": "ap_ready", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "ready", "bundle":{"name": "ap_ready", "role": "default" }} , 
- 	{ "name": "inData_TDATA", "direction": "in", "datatype": "sc_lv", "bitwidth":8, "type": "signal", "bundle":{"name": "inData_V_data_V", "role": "default" }} , 
  	{ "name": "inData_TVALID", "direction": "in", "datatype": "sc_logic", "bitwidth":1, "type": "invld", "bundle":{"name": "inData_V_user_V", "role": "default" }} , 
+ 	{ "name": "inData_TDATA", "direction": "in", "datatype": "sc_lv", "bitwidth":8, "type": "signal", "bundle":{"name": "inData_V_data_V", "role": "default" }} , 
  	{ "name": "inData_TREADY", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "inacc", "bundle":{"name": "inData_V_user_V", "role": "default" }} , 
  	{ "name": "inData_TUSER", "direction": "in", "datatype": "sc_lv", "bitwidth":2, "type": "signal", "bundle":{"name": "inData_V_user_V", "role": "default" }} , 
  	{ "name": "header", "direction": "out", "datatype": "sc_lv", "bitwidth":8, "type": "signal", "bundle":{"name": "header", "role": "default" }} , 
@@ -63,22 +65,20 @@ set NewPortList {[
  	{ "name": "livewire_ap_vld", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "outvld", "bundle":{"name": "livewire", "role": "ap_vld" }}  ]}
 
 set RtlHierarchyInfo {[
-	{"Level" : "0", "Path" : "`AUTOTB_DUT_INST", "Parent" : "", "Child" : [], "CDFG" : "frameSIPO", "VariableLatency" : "0", "AlignedPipeline" : "0", "UnalignedPipeline" : "0", "ProcessNetwork" : "0", "Combinational" : "0", "ControlExist" : "1",
+	{"Level" : "0", "Path" : "`AUTOTB_DUT_INST", "Parent" : "", "Child" : [], "CDFG" : "frameSIPO", "VariableLatency" : "0", "AlignedPipeline" : "0", "UnalignedPipeline" : "1", "ProcessNetwork" : "0", "Combinational" : "0", "ControlExist" : "1",
 		"Port" : [
 		{"Name" : "inData_V_data_V", "Type" : "Axis", "Direction" : "I", "BlockSignal" : [
 			{"Name" : "inData_TDATA_blk_n", "Type" : "RtlSignal"}], "SubConnect" : []}, 
 		{"Name" : "inData_V_user_V", "Type" : "Axis", "Direction" : "I", "BlockSignal" : [], "SubConnect" : []}, 
 		{"Name" : "header", "Type" : "Vld", "Direction" : "O", "BlockSignal" : [], "SubConnect" : []}, 
 		{"Name" : "livewire", "Type" : "Vld", "Direction" : "O", "BlockSignal" : [], "SubConnect" : []}, 
-		{"Name" : "p_ZGVZ9frameSIPORN3hls6streamI7", "Type" : "OVld", "Direction" : "IO", "BlockSignal" : [], "SubConnect" : []}, 
-		{"Name" : "packet_length_V", "Type" : "OVld", "Direction" : "IO", "BlockSignal" : [], "SubConnect" : []}, 
 		{"Name" : "CNT_STATE", "Type" : "OVld", "Direction" : "IO", "BlockSignal" : [], "SubConnect" : []}, 
 		{"Name" : "byte_cnt", "Type" : "OVld", "Direction" : "IO", "BlockSignal" : [], "SubConnect" : []}],
 		"WaitState" : [],
 		"SubBlockPort" : []}]}
 
 set PerformanceInfo {[
-	{"Name" : "Latency", "Min" : "0", "Max" : "0"}
+	{"Name" : "Latency", "Min" : "1", "Max" : "1"}
 	, {"Name" : "Interval", "Min" : "1", "Max" : "1"}
 ]}
 

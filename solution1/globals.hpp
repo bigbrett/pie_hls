@@ -15,6 +15,7 @@
 
 
 using namespace hls;
+using namespace std;
 
 
 struct axiWord
