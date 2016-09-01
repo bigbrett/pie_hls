@@ -3,13 +3,9 @@
 
 
 void frameSIPO(stream<axiByte> &inData,
-			   stream<axiByte> &outData,
-			   uint1* sfd_detected,
-			   uint1* src_addr,
-			   uint1* dest_addr,
-			   uint1* ethertype,
-			   uint1* ping);
+			   uint8_t* header,
+			   uint1* livewire);
 
-
+static ap_uint<16> packet_length;
 
 #endif //ifdef

@@ -1,7 +1,7 @@
 <profile>
 
 <section name = "Vivado HLS Report for 'frameSIPO'" level="0">
-<item name = "Date">Tue Aug 30 14:22:45 2016
+<item name = "Date">Thu Sep  1 09:47:14 2016
 </item>
 <item name = "Version">2016.2 (Build 1577090 on Thu Jun 02 16:59:10 MDT 2016)</item>
 <item name = "Project">pie_hls</item>
@@ -16,7 +16,7 @@
 <item name = "Target clock period (ns)">8.00</item>
 <item name = "Clock uncertainty (ns)">1.00</item>
 <item name = "Target initiation interval">1</item>
-<item name = "Estimated clock period (ns)">5.85</item>
+<item name = "Estimated clock period (ns)">8.01</item>
 </section>
 </item>
 <item name = "Latency (clock cycles)">
@@ -46,12 +46,12 @@
 <item name = "Summary"><table name="" hasTotal="1">
 <keys size="5">Name, BRAM_18K, DSP48E, FF, LUT</keys>
 <column name="DSP">-, -, -, -</column>
-<column name="Expression">-, -, 0, 90</column>
+<column name="Expression">-, -, 0, 131</column>
 <column name="FIFO">-, -, -, -</column>
 <column name="Instance">-, -, -, -</column>
 <column name="Memory">-, -, -, -</column>
-<column name="Multiplexer">-, -, -, 55</column>
-<column name="Register">-, -, 34, -</column>
+<column name="Multiplexer">-, -, -, 104</column>
+<column name="Register">-, -, 51, -</column>
 <specialColumn name="Available">280, 220, 106400, 53200</specialColumn>
 <specialColumn name="Utilization (%)">0, 0, ~0, ~0</specialColumn>
 </table>
@@ -76,31 +76,42 @@
 </item>
 <item name = "Expression"><table name="" hasTotal="1">
 <keys size="7">Variable Name, Operation, DSP48E, FF, LUT, Bitwidth P0, Bitwidth P1</keys>
-<column name="tmp_5_fu_227_p2">+, 0, 0, 32, 32, 1</column>
-<column name="ap_sig_127">and, 0, 0, 1, 1, 1</column>
-<column name="ap_sig_192">and, 0, 0, 1, 1, 1</column>
-<column name="ap_sig_51">and, 0, 0, 1, 1, 1</column>
-<column name="tmp_nbreadreq_fu_70_p4">and, 0, 0, 1, 1, 0</column>
-<column name="ping">icmp, 0, 0, 6, 16, 12</column>
-<column name="tmp_2_fu_257_p2">icmp, 0, 0, 11, 32, 4</column>
-<column name="tmp_3_fu_214_p2">icmp, 0, 0, 3, 8, 7</column>
-<column name="tmp_6_fu_239_p2">icmp, 0, 0, 11, 32, 3</column>
-<column name="tmp_7_fu_245_p2">icmp, 0, 0, 11, 32, 4</column>
-<column name="tmp_8_fu_251_p2">icmp, 0, 0, 11, 32, 4</column>
-<column name="ap_sig_57">or, 0, 0, 1, 1, 1</column>
+<column name="tmp_6_fu_315_p2">+, 0, 0, 32, 32, 1</column>
+<column name="ap_sig_128">and, 0, 0, 1, 1, 1</column>
+<column name="ap_sig_161">and, 0, 0, 1, 1, 1</column>
+<column name="ap_sig_181">and, 0, 0, 1, 1, 1</column>
+<column name="ap_sig_282">and, 0, 0, 1, 1, 1</column>
+<column name="ap_sig_290">and, 0, 0, 1, 1, 1</column>
+<column name="ap_sig_292">and, 0, 0, 1, 1, 1</column>
+<column name="tmp_nbreadreq_fu_94_p4">and, 0, 0, 1, 1, 0</column>
+<column name="icmp_fu_379_p2">icmp, 0, 0, 9, 26, 1</column>
+<column name="tmp_2_fu_363_p2">icmp, 0, 0, 11, 32, 5</column>
+<column name="tmp_3_fu_351_p2">icmp, 0, 0, 11, 32, 5</column>
+<column name="tmp_4_fu_297_p2">icmp, 0, 0, 3, 8, 7</column>
+<column name="tmp_5_fu_357_p2">icmp, 0, 0, 11, 32, 5</column>
+<column name="tmp_7_fu_327_p2">icmp, 0, 0, 11, 32, 3</column>
+<column name="tmp_8_fu_333_p2">icmp, 0, 0, 11, 32, 4</column>
+<column name="tmp_9_fu_339_p2">icmp, 0, 0, 11, 32, 4</column>
+<column name="tmp_s_fu_345_p2">icmp, 0, 0, 11, 32, 4</column>
+<column name="ap_sig_50">or, 0, 0, 1, 1, 1</column>
+<column name="storemerge1_cast_cast_fu_386_p3">select, 0, 0, 2, 1, 2</column>
 </table>
 </item>
 <item name = "Multiplexer"><table name="" hasTotal="1">
 <keys size="5">Name, LUT, Input Size, Bits, Total Bits</keys>
-<column name="CNT_STATE">1, 2, 1, 2</column>
+<column name="CNT_STATE">1, 3, 1, 3</column>
 <column name="byte_cnt">32, 2, 32, 64</column>
-<column name="dest_addr">1, 3, 1, 3</column>
-<column name="ethertype">1, 3, 1, 3</column>
+<column name="header">16, 9, 8, 72</column>
 <column name="inData_TDATA_blk_n">1, 2, 1, 2</column>
-<column name="packet_type_load_1_phi_fu_178_p12">16, 4, 16, 64</column>
-<column name="sfd_detected_flag_1_phi_fu_132_p12">1, 3, 1, 3</column>
-<column name="sfd_detected_new_1_phi_fu_155_p12">1, 3, 1, 3</column>
-<column name="src_addr">1, 3, 1, 3</column>
+<column name="livewire">1, 3, 1, 3</column>
+<column name="p_Val2_s_phi_fu_149_p4">16, 3, 16, 48</column>
+<column name="packet_length_V_flag_1_phi_fu_170_p6">1, 3, 1, 3</column>
+<column name="packet_length_V_flag_8_phi_fu_209_p16">1, 3, 1, 3</column>
+<column name="packet_length_V_flag_phi_fu_138_p4">1, 3, 1, 3</column>
+<column name="packet_length_V_new_1_phi_fu_184_p6">16, 4, 16, 64</column>
+<column name="packet_length_V_new_8_phi_fu_238_p16">16, 3, 16, 48</column>
+<column name="storemerge2_phi_fu_196_p6">1, 3, 1, 3</column>
+<column name="storemerge_phi_fu_159_p4">1, 3, 1, 3</column>
 </table>
 </item>
 <item name = "Register"><table name="" hasTotal="1">
@@ -108,6 +119,8 @@
 <column name="CNT_STATE">1, 0, 1, 0</column>
 <column name="ap_CS_fsm">1, 0, 1, 0</column>
 <column name="byte_cnt">32, 0, 32, 0</column>
+<column name="p_ZGVZ9frameSIPORN3hls6streamI7">1, 0, 1, 0</column>
+<column name="packet_length_V">16, 0, 16, 0</column>
 </table>
 </item>
 </section>
@@ -126,35 +139,27 @@
 <column name="inData_TDATA">in, 8, axis, inData_V_data_V, pointer</column>
 <column name="inData_TVALID">in, 1, axis, inData_V_user_V, pointer</column>
 <column name="inData_TREADY">out, 1, axis, inData_V_user_V, pointer</column>
-<column name="inData_TUSER">in, 128, axis, inData_V_user_V, pointer</column>
-<column name="outData_TDATA">in, 8, axis, outData_V_data_V, pointer</column>
-<column name="outData_TVALID">in, 1, axis, outData_V_user_V, pointer</column>
-<column name="outData_TREADY">out, 1, axis, outData_V_user_V, pointer</column>
-<column name="outData_TUSER">in, 128, axis, outData_V_user_V, pointer</column>
-<column name="sfd_detected">out, 1, ap_vld, sfd_detected, pointer</column>
-<column name="sfd_detected_ap_vld">out, 1, ap_vld, sfd_detected, pointer</column>
-<column name="src_addr">out, 1, ap_vld, src_addr, pointer</column>
-<column name="src_addr_ap_vld">out, 1, ap_vld, src_addr, pointer</column>
-<column name="dest_addr">out, 1, ap_vld, dest_addr, pointer</column>
-<column name="dest_addr_ap_vld">out, 1, ap_vld, dest_addr, pointer</column>
-<column name="ethertype">out, 1, ap_vld, ethertype, pointer</column>
-<column name="ethertype_ap_vld">out, 1, ap_vld, ethertype, pointer</column>
-<column name="ping">out, 1, ap_vld, ping, pointer</column>
-<column name="ping_ap_vld">out, 1, ap_vld, ping, pointer</column>
+<column name="inData_TUSER">in, 2, axis, inData_V_user_V, pointer</column>
+<column name="header">out, 8, ap_vld, header, pointer</column>
+<column name="header_ap_vld">out, 1, ap_vld, header, pointer</column>
+<column name="livewire">out, 1, ap_vld, livewire, pointer</column>
+<column name="livewire_ap_vld">out, 1, ap_vld, livewire, pointer</column>
 </table>
 </item>
 </section>
 
 <section name = "Critical Path" level="0">
-<item name = "Max Delay">5.85</item>
+<item name = "Max Delay">8.01</item>
 <item name = "Critical Path Table"><table name="Critical Path Table" hasTotal="0">
 <keys size="15">Name, Operator, Delay, Accumulated Delay, Store Source, Resource, Core, Interface, Type, Port, Array, Scope, Pointer, Callee, Phi Node</keys>
-<column name="'empty', pie_hls/solution1/frameSIPO.cpp:49">read, 0.00, 0.00, -, -, -, axis, read, &apos;inData_V_data_V&apos;, -, -, -, -, -</column>
-<column name="'tmp.data.V', pie_hls/solution1/frameSIPO.cpp:49">extractvalue, 0.00, 0.00, -, -, -, -, -, -, -, -, -, -, -</column>
-<column name="'tmp_3', pie_hls/solution1/frameSIPO.cpp:38">icmp, 2.00, 2.00, -, -, -, -, -, -, -, -, -, -, -</column>
-<column name="'packet_type_load_1', pie_hls/solution1/frameSIPO.cpp:58">phi, 1.57, 3.57, -, -, -, -, -, -, -, -, -, -, &apos;tmp_4&apos;, pie_hls/solution1/frameSIPO.cpp:63, &apos;tmp_s&apos;, pie_hls/solution1/frameSIPO.cpp:58</column>
-<column name="'packet_type_load_1', pie_hls/solution1/frameSIPO.cpp:58">phi, 0.00, 3.57, -, -, -, -, -, -, -, -, -, -, &apos;tmp_4&apos;, pie_hls/solution1/frameSIPO.cpp:63, &apos;tmp_s&apos;, pie_hls/solution1/frameSIPO.cpp:58</column>
-<column name="'tmp_1', pie_hls/solution1/frameSIPO.cpp:75">icmp, 2.28, 5.85, -, -, -, -, -, -, -, -, -, -, -</column>
+<column name="'byte_cnt_load', pie_hls/solution1/frameSIPO.cpp:46">load, 0.00, 0.00, -, -, -, -, -, -, -, -, &apos;byte_cnt&apos;, -, -</column>
+<column name="'tmp_6', pie_hls/solution1/frameSIPO.cpp:46">add, 2.44, 2.44, -, -, -, -, -, -, -, -, -, -, -</column>
+<column name="'tmp_1', pie_hls/solution1/frameSIPO.cpp:85">partselect, 0.00, 2.44, -, -, -, -, -, -, -, -, -, -, -</column>
+<column name="'icmp', pie_hls/solution1/frameSIPO.cpp:85">icmp, 2.43, 4.87, -, -, -, -, -, -, -, -, -, -, -</column>
+<column name="'packet_length_V_flag_1'">phi, 1.57, 6.44, -, -, -, -, -, -, -, -, -, -, </column>
+<column name="'packet_length_V_flag_1'">phi, 0.00, 6.44, -, -, -, -, -, -, -, -, -, -, </column>
+<column name="'packet_length_V_flag_8'">phi, 1.57, 8.01, -, -, -, -, -, -, -, -, -, -, </column>
+<column name="'packet_length_V_flag_8'">phi, 0.00, 8.01, -, -, -, -, -, -, -, -, -, -, </column>
 </table>
 </item>
 </section>

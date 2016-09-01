@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'frameSIPO'
 ================================================================
-* Date:           Tue Aug 30 14:22:45 2016
+* Date:           Thu Sep  1 09:47:14 2016
 
 * Version:        2016.2 (Build 1577090 on Thu Jun 02 16:59:10 MDT 2016)
 * Project:        pie_hls
@@ -20,7 +20,7 @@
     +--------+-------+----------+------------+
     |  Clock | Target| Estimated| Uncertainty|
     +--------+-------+----------+------------+
-    |ap_clk  |   8.00|      5.85|        1.00|
+    |ap_clk  |   8.00|      8.01|        1.00|
     +--------+-------+----------+------------+
 
 + Latency (clock cycles): 
@@ -77,51 +77,54 @@ IsGatedGlobalClock: 0
 1 --> 
 * FSM state operations: 
 
- <State 1>: 5.85ns
+ <State 1>: 8.01ns
 ST_1: stg_2 [1/1] 0.00ns
-:0  call void (...)* @_ssdm_op_SpecBitsMap(i8* %inData_V_data_V), !map !47
+:0  call void (...)* @_ssdm_op_SpecBitsMap(i8* %inData_V_data_V), !map !57
 
 ST_1: stg_3 [1/1] 0.00ns
-:1  call void (...)* @_ssdm_op_SpecBitsMap(i128* %inData_V_user_V), !map !51
+:1  call void (...)* @_ssdm_op_SpecBitsMap(i2* %inData_V_user_V), !map !61
 
 ST_1: stg_4 [1/1] 0.00ns
-:2  call void (...)* @_ssdm_op_SpecBitsMap(i8* %outData_V_data_V), !map !55
+:2  call void (...)* @_ssdm_op_SpecBitsMap(i8* %header), !map !65
 
 ST_1: stg_5 [1/1] 0.00ns
-:3  call void (...)* @_ssdm_op_SpecBitsMap(i128* %outData_V_user_V), !map !59
+:3  call void (...)* @_ssdm_op_SpecBitsMap(i1* %livewire), !map !69
 
 ST_1: stg_6 [1/1] 0.00ns
-:4  call void (...)* @_ssdm_op_SpecBitsMap(i1* %sfd_detected), !map !63
+:4  call void (...)* @_ssdm_op_SpecTopModule([10 x i8]* @frameSIPO_str) nounwind
 
 ST_1: stg_7 [1/1] 0.00ns
-:5  call void (...)* @_ssdm_op_SpecBitsMap(i1* %src_addr), !map !67
+:5  call void (...)* @_ssdm_op_SpecInterface(i8* %inData_V_data_V, i2* %inData_V_user_V, [5 x i8]* @p_str, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str2, [1 x i8]* @p_str2, [1 x i8]* @p_str2, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str2) nounwind
 
 ST_1: stg_8 [1/1] 0.00ns
-:6  call void (...)* @_ssdm_op_SpecBitsMap(i1* %dest_addr), !map !71
+:6  call void (...)* @_ssdm_op_SpecPipeline(i32 1, i32 2, i32 1, i32 0, [1 x i8]* @p_str2) nounwind
 
-ST_1: stg_9 [1/1] 0.00ns
-:7  call void (...)* @_ssdm_op_SpecBitsMap(i1* %ethertype), !map !75
+ST_1: p_ZGVZ9frameSIPORN3hls6streamI7 [1/1] 0.00ns
+:7  %p_ZGVZ9frameSIPORN3hls6streamI7 = load i1* @p_ZGVZ9frameSIPORN3hls6streamI7, align 1
 
-ST_1: stg_10 [1/1] 0.00ns
-:8  call void (...)* @_ssdm_op_SpecBitsMap(i1* %ping), !map !79
+ST_1: packet_length_V_load [1/1] 0.00ns
+:8  %packet_length_V_load = load i16* @packet_length_V, align 2
 
-ST_1: stg_11 [1/1] 0.00ns
-:9  call void (...)* @_ssdm_op_SpecTopModule([10 x i8]* @frameSIPO_str) nounwind
+ST_1: stg_11 [1/1] 1.57ns
+:9  br i1 %p_ZGVZ9frameSIPORN3hls6streamI7, label %._crit_edge, label %1
 
 ST_1: stg_12 [1/1] 0.00ns
-:10  call void (...)* @_ssdm_op_SpecInterface(i8* %inData_V_data_V, i128* %inData_V_user_V, [5 x i8]* @p_str, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str1, [1 x i8]* @p_str1, [1 x i8]* @p_str1, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str1) nounwind
+:0  store i1 true, i1* @p_ZGVZ9frameSIPORN3hls6streamI7, align 1
 
-ST_1: stg_13 [1/1] 0.00ns
-:11  call void (...)* @_ssdm_op_SpecInterface(i8* %outData_V_data_V, i128* %outData_V_user_V, [5 x i8]* @p_str, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str1, [1 x i8]* @p_str1, [1 x i8]* @p_str1, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str1) nounwind
+ST_1: stg_13 [1/1] 1.57ns
+:1  br label %._crit_edge
 
-ST_1: stg_14 [1/1] 0.00ns
-:12  call void (...)* @_ssdm_op_SpecPipeline(i32 1, i32 2, i32 1, i32 0, [1 x i8]* @p_str1) nounwind
+ST_1: packet_length_V_flag [1/1] 0.00ns
+._crit_edge:0  %packet_length_V_flag = phi i1 [ true, %1 ], [ false, %0 ]
+
+ST_1: p_Val2_s [1/1] 0.00ns
+._crit_edge:1  %p_Val2_s = phi i16 [ 0, %1 ], [ %packet_length_V_load, %0 ]
 
 ST_1: tmp [1/1] 0.00ns
-:13  %tmp = call i1 @_ssdm_op_NbReadReq.axis.i8P.i128P(i8* %inData_V_data_V, i128* %inData_V_user_V, i32 1)
+._crit_edge:2  %tmp = call i1 @_ssdm_op_NbReadReq.axis.i8P.i2P(i8* %inData_V_data_V, i2* %inData_V_user_V, i32 1)
 
-ST_1: stg_16 [1/1] 0.00ns
-:14  br i1 %tmp, label %1, label %._crit_edge
+ST_1: stg_17 [1/1] 1.57ns
+._crit_edge:3  br i1 %tmp, label %2, label %._crit_edge46
 
 ST_1: CNT_STATE_load [1/1] 0.00ns
 :0  %CNT_STATE_load = load i1* @CNT_STATE, align 1
@@ -130,139 +133,202 @@ ST_1: byte_cnt_load [1/1] 0.00ns
 :1  %byte_cnt_load = load i32* @byte_cnt, align 4
 
 ST_1: empty [1/1] 0.00ns
-:2  %empty = call { i8, i128 } @_ssdm_op_Read.axis.volatile.i8P.i128P(i8* %inData_V_data_V, i128* %inData_V_user_V)
+:2  %empty = call { i8, i2 } @_ssdm_op_Read.axis.volatile.i8P.i2P(i8* %inData_V_data_V, i2* %inData_V_user_V)
 
 ST_1: tmp_data_V [1/1] 0.00ns
-:3  %tmp_data_V = extractvalue { i8, i128 } %empty, 0
+:3  %tmp_data_V = extractvalue { i8, i2 } %empty, 0
 
-ST_1: stg_21 [1/1] 0.00ns
-:4  br i1 %CNT_STATE_load, label %2, label %._crit_edge20
-
-ST_1: stg_22 [1/1] 1.57ns
-._crit_edge20:0  store i32 0, i32* @byte_cnt, align 4
+ST_1: stg_22 [1/1] 0.00ns
+:4  br i1 %CNT_STATE_load, label %7, label %3
 
 ST_1: stg_23 [1/1] 0.00ns
-._crit_edge20:1  call void @_ssdm_op_Write.ap_auto.i1P(i1* %src_addr, i1 false)
+:0  call void @_ssdm_op_Write.ap_auto.i1P(i1* %livewire, i1 false)
 
-ST_1: stg_24 [1/1] 0.00ns
-._crit_edge20:2  call void @_ssdm_op_Write.ap_auto.i1P(i1* %dest_addr, i1 false)
+ST_1: tmp_4 [1/1] 2.00ns
+:1  %tmp_4 = icmp eq i8 %tmp_data_V, -43
 
 ST_1: stg_25 [1/1] 0.00ns
-._crit_edge20:3  call void @_ssdm_op_Write.ap_auto.i1P(i1* %ethertype, i1 false)
+:2  br i1 %tmp_4, label %4, label %5
 
-ST_1: tmp_3 [1/1] 2.00ns
-._crit_edge20:4  %tmp_3 = icmp eq i8 %tmp_data_V, -43
+ST_1: stg_26 [1/1] 1.57ns
+:0  store i32 0, i32* @byte_cnt, align 4
 
 ST_1: stg_27 [1/1] 1.57ns
-._crit_edge20:5  store i1 %tmp_3, i1* @CNT_STATE, align 1
+:1  br label %6
 
-ST_1: stg_28 [1/1] 1.57ns
-._crit_edge20:6  br label %._crit_edge19
+ST_1: stg_28 [1/1] 0.00ns
+:0  call void @_ssdm_op_Write.ap_auto.i8P(i8* %header, i8 -128)
 
-ST_1: tmp_5 [1/1] 2.44ns
-:0  %tmp_5 = add nsw i32 %byte_cnt_load, 1
+ST_1: stg_29 [1/1] 1.57ns
+:1  br label %6
 
-ST_1: stg_30 [1/1] 1.57ns
-:1  store i32 %tmp_5, i32* @byte_cnt, align 4
+ST_1: storemerge [1/1] 0.00ns
+:0  %storemerge = phi i1 [ false, %5 ], [ true, %4 ]
 
-ST_1: tmp_6 [1/1] 2.52ns
-:2  %tmp_6 = icmp slt i32 %tmp_5, 7
+ST_1: stg_31 [1/1] 1.57ns
+:1  store i1 %storemerge, i1* @CNT_STATE, align 1
 
-ST_1: stg_32 [1/1] 0.00ns
-:3  br i1 %tmp_6, label %3, label %4
+ST_1: stg_32 [1/1] 1.57ns
+:2  br label %._crit_edge46
+
+ST_1: tmp_6 [1/1] 2.44ns
+:0  %tmp_6 = add nsw i32 %byte_cnt_load, 1
+
+ST_1: stg_34 [1/1] 1.57ns
+:1  store i32 %tmp_6, i32* @byte_cnt, align 4
+
+ST_1: stg_35 [1/1] 0.00ns
+:2  call void @_ssdm_op_Write.ap_auto.i1P(i1* %livewire, i1 true)
 
 ST_1: tmp_7 [1/1] 2.52ns
-:0  %tmp_7 = icmp slt i32 %tmp_5, 13
+:3  %tmp_7 = icmp slt i32 %tmp_6, 7
 
-ST_1: stg_34 [1/1] 0.00ns
-:1  br i1 %tmp_7, label %5, label %6
+ST_1: stg_37 [1/1] 0.00ns
+:4  br i1 %tmp_7, label %8, label %9
 
 ST_1: tmp_8 [1/1] 2.52ns
-:0  %tmp_8 = icmp eq i32 %tmp_5, 13
-
-ST_1: stg_36 [1/1] 0.00ns
-:1  br i1 %tmp_8, label %7, label %8
-
-ST_1: tmp_2 [1/1] 2.52ns
-:0  %tmp_2 = icmp eq i32 %tmp_5, 14
-
-ST_1: stg_38 [1/1] 0.00ns
-:1  br i1 %tmp_2, label %9, label %10
+:0  %tmp_8 = icmp slt i32 %tmp_6, 13
 
 ST_1: stg_39 [1/1] 0.00ns
-:0  call void @_ssdm_op_Write.ap_auto.i1P(i1* %src_addr, i1 false)
+:1  br i1 %tmp_8, label %10, label %11
 
-ST_1: stg_40 [1/1] 0.00ns
-:1  call void @_ssdm_op_Write.ap_auto.i1P(i1* %dest_addr, i1 false)
+ST_1: tmp_9 [1/1] 2.52ns
+:0  %tmp_9 = icmp eq i32 %tmp_6, 13
 
 ST_1: stg_41 [1/1] 0.00ns
-:2  call void @_ssdm_op_Write.ap_auto.i1P(i1* %ethertype, i1 false)
+:1  br i1 %tmp_9, label %12, label %13
 
-ST_1: stg_42 [1/1] 1.57ns
-:3  store i1 false, i1* @CNT_STATE, align 1
+ST_1: tmp_s [1/1] 2.52ns
+:0  %tmp_s = icmp eq i32 %tmp_6, 14
 
-ST_1: stg_43 [1/1] 1.57ns
-:4  br label %._crit_edge19
+ST_1: stg_43 [1/1] 0.00ns
+:1  br i1 %tmp_s, label %14, label %15
 
-ST_1: stg_44 [1/1] 0.00ns
-:0  call void @_ssdm_op_Write.ap_auto.i1P(i1* %ethertype, i1 true)
+ST_1: tmp_3 [1/1] 2.52ns
+:0  %tmp_3 = icmp slt i32 %tmp_6, 17
 
-ST_1: tmp_4 [1/1] 0.00ns
-:1  %tmp_4 = zext i8 %tmp_data_V to i16
+ST_1: stg_45 [1/1] 0.00ns
+:1  br i1 %tmp_3, label %16, label %17
 
-ST_1: stg_46 [1/1] 1.57ns
-:2  br label %._crit_edge19
+ST_1: tmp_5 [1/1] 2.52ns
+:0  %tmp_5 = icmp eq i32 %tmp_6, 17
 
 ST_1: stg_47 [1/1] 0.00ns
-:0  call void @_ssdm_op_Write.ap_auto.i1P(i1* %ethertype, i1 true)
+:1  br i1 %tmp_5, label %18, label %19
 
-ST_1: tmp_s [1/1] 0.00ns
-:1  %tmp_s = call i16 @_ssdm_op_BitConcatenate.i16.i8.i8(i8 %tmp_data_V, i8 0)
+ST_1: tmp_2 [1/1] 2.52ns
+:0  %tmp_2 = icmp eq i32 %tmp_6, 18
 
-ST_1: stg_49 [1/1] 1.57ns
-:2  br label %._crit_edge19
+ST_1: stg_49 [1/1] 0.00ns
+:1  br i1 %tmp_2, label %20, label %21
 
-ST_1: stg_50 [1/1] 0.00ns
-:0  call void @_ssdm_op_Write.ap_auto.i1P(i1* %src_addr, i1 true)
+ST_1: tmp_1 [1/1] 0.00ns
+:0  %tmp_1 = call i26 @_ssdm_op_PartSelect.i26.i32.i32.i32(i32 %tmp_6, i32 6, i32 31)
 
-ST_1: stg_51 [1/1] 1.57ns
-:1  br label %._crit_edge19
+ST_1: icmp [1/1] 2.43ns
+:1  %icmp = icmp slt i26 %tmp_1, 1
 
-ST_1: stg_52 [1/1] 0.00ns
-:0  call void @_ssdm_op_Write.ap_auto.i1P(i1* %dest_addr, i1 true)
+ST_1: storemerge1_cast_cast [1/1] 1.37ns
+:2  %storemerge1_cast_cast = select i1 %icmp, i8 2, i8 1
 
-ST_1: stg_53 [1/1] 1.57ns
-:1  br label %._crit_edge19
+ST_1: stg_53 [1/1] 0.00ns
+:3  call void @_ssdm_op_Write.ap_auto.i8P(i8* %header, i8 %storemerge1_cast_cast)
 
-ST_1: sfd_detected_flag_1 [1/1] 0.00ns
-._crit_edge19:0  %sfd_detected_flag_1 = phi i1 [ false, %3 ], [ false, %5 ], [ false, %7 ], [ false, %9 ], [ true, %10 ], [ true, %._crit_edge20 ]
+ST_1: stg_54 [1/1] 1.57ns
+:4  br label %22
 
-ST_1: sfd_detected_new_1 [1/1] 0.00ns
-._crit_edge19:1  %sfd_detected_new_1 = phi i1 [ undef, %3 ], [ undef, %5 ], [ undef, %7 ], [ undef, %9 ], [ false, %10 ], [ %tmp_3, %._crit_edge20 ]
+ST_1: stg_55 [1/1] 0.00ns
+:0  call void @_ssdm_op_Write.ap_auto.i8P(i8* %header, i8 -1)
 
-ST_1: packet_type_load_1 [1/1] 0.00ns (grouped into LUT with out node tmp_1)
-._crit_edge19:2  %packet_type_load_1 = phi i16 [ 0, %3 ], [ 0, %5 ], [ %tmp_s, %7 ], [ %tmp_4, %9 ], [ 0, %10 ], [ 0, %._crit_edge20 ]
+ST_1: p_Result_1 [1/1] 0.00ns
+:1  %p_Result_1 = call i16 @llvm.part.set.i16.i8(i16 %p_Val2_s, i8 %tmp_data_V, i32 0, i32 7)
 
-ST_1: tmp_1 [1/1] 2.28ns (out node of the LUT)
-._crit_edge19:3  %tmp_1 = icmp eq i16 %packet_type_load_1, 2048
+ST_1: stg_57 [1/1] 1.57ns
+:2  br label %22
 
 ST_1: stg_58 [1/1] 0.00ns
-._crit_edge19:4  call void @_ssdm_op_Write.ap_auto.i1P(i1* %ping, i1 %tmp_1)
+:0  call void @_ssdm_op_Write.ap_auto.i8P(i8* %header, i8 -1)
 
-ST_1: stg_59 [1/1] 0.00ns
-._crit_edge19:5  br i1 %sfd_detected_flag_1, label %mergeST, label %._crit_edge19.new
+ST_1: p_Result_s [1/1] 0.00ns
+:1  %p_Result_s = call i16 @llvm.part.set.i16.i8(i16 %p_Val2_s, i8 %tmp_data_V, i32 8, i32 15)
 
-ST_1: stg_60 [1/1] 0.00ns
-mergeST:0  call void @_ssdm_op_Write.ap_auto.i1P(i1* %sfd_detected, i1 %sfd_detected_new_1)
+ST_1: stg_60 [1/1] 1.57ns
+:2  br label %22
 
-ST_1: stg_61 [1/1] 0.00ns
-mergeST:1  br label %._crit_edge19.new
+ST_1: packet_length_V_flag_1 [1/1] 0.00ns
+:0  %packet_length_V_flag_1 = phi i1 [ true, %18 ], [ true, %20 ], [ %packet_length_V_flag, %21 ]
 
-ST_1: stg_62 [1/1] 0.00ns
-._crit_edge19.new:0  br label %._crit_edge
+ST_1: packet_length_V_new_1 [1/1] 0.00ns
+:1  %packet_length_V_new_1 = phi i16 [ %p_Result_s, %18 ], [ %p_Result_1, %20 ], [ 0, %21 ]
 
-ST_1: stg_63 [1/1] 0.00ns
-._crit_edge:0  ret void
+ST_1: storemerge2 [1/1] 0.00ns
+:2  %storemerge2 = phi i1 [ true, %18 ], [ true, %20 ], [ %icmp, %21 ]
+
+ST_1: stg_64 [1/1] 1.57ns
+:3  store i1 %storemerge2, i1* @CNT_STATE, align 1
+
+ST_1: stg_65 [1/1] 1.57ns
+:4  br label %._crit_edge46
+
+ST_1: stg_66 [1/1] 0.00ns
+:0  call void @_ssdm_op_Write.ap_auto.i8P(i8* %header, i8 4)
+
+ST_1: stg_67 [1/1] 1.57ns
+:1  br label %._crit_edge46
+
+ST_1: stg_68 [1/1] 0.00ns
+:0  call void @_ssdm_op_Write.ap_auto.i8P(i8* %header, i8 8)
+
+ST_1: stg_69 [1/1] 1.57ns
+:1  store i1 true, i1* @CNT_STATE, align 1
+
+ST_1: stg_70 [1/1] 1.57ns
+:2  br label %._crit_edge46
+
+ST_1: stg_71 [1/1] 0.00ns
+:0  call void @_ssdm_op_Write.ap_auto.i8P(i8* %header, i8 16)
+
+ST_1: stg_72 [1/1] 1.57ns
+:1  store i1 true, i1* @CNT_STATE, align 1
+
+ST_1: stg_73 [1/1] 1.57ns
+:2  br label %._crit_edge46
+
+ST_1: stg_74 [1/1] 0.00ns
+:0  call void @_ssdm_op_Write.ap_auto.i8P(i8* %header, i8 32)
+
+ST_1: stg_75 [1/1] 1.57ns
+:1  store i1 true, i1* @CNT_STATE, align 1
+
+ST_1: stg_76 [1/1] 1.57ns
+:2  br label %._crit_edge46
+
+ST_1: stg_77 [1/1] 0.00ns
+:0  call void @_ssdm_op_Write.ap_auto.i8P(i8* %header, i8 64)
+
+ST_1: stg_78 [1/1] 1.57ns
+:1  store i1 true, i1* @CNT_STATE, align 1
+
+ST_1: stg_79 [1/1] 1.57ns
+:2  br label %._crit_edge46
+
+ST_1: packet_length_V_flag_8 [1/1] 0.00ns
+._crit_edge46:0  %packet_length_V_flag_8 = phi i1 [ %packet_length_V_flag, %._crit_edge ], [ %packet_length_V_flag, %6 ], [ %packet_length_V_flag, %8 ], [ %packet_length_V_flag, %10 ], [ %packet_length_V_flag, %12 ], [ %packet_length_V_flag, %14 ], [ %packet_length_V_flag, %16 ], [ %packet_length_V_flag_1, %22 ]
+
+ST_1: packet_length_V_new_8 [1/1] 0.00ns
+._crit_edge46:1  %packet_length_V_new_8 = phi i16 [ 0, %._crit_edge ], [ 0, %6 ], [ 0, %8 ], [ 0, %10 ], [ 0, %12 ], [ 0, %14 ], [ 0, %16 ], [ %packet_length_V_new_1, %22 ]
+
+ST_1: stg_82 [1/1] 0.00ns
+._crit_edge46:2  br i1 %packet_length_V_flag_8, label %mergeST, label %._crit_edge46.new
+
+ST_1: stg_83 [1/1] 0.00ns
+mergeST:0  store i16 %packet_length_V_new_8, i16* @packet_length_V, align 2
+
+ST_1: stg_84 [1/1] 0.00ns
+mergeST:1  br label %._crit_edge46.new
+
+ST_1: stg_85 [1/1] 0.00ns
+._crit_edge46.new:0  ret void
 
 
 
@@ -271,7 +337,16 @@ ST_1: stg_63 [1/1] 0.00ns
 ============================================================
 Target clock period: 8ns, clock uncertainty: 1ns.
 
- No timing violations. 
+ <State 1>: 8.01ns
+The critical path consists of the following:
+	'load' operation ('byte_cnt_load', pie_hls/solution1/frameSIPO.cpp:46) on static variable 'byte_cnt' (0 ns)
+	'add' operation ('tmp_6', pie_hls/solution1/frameSIPO.cpp:46) (2.44 ns)
+	'partselect' operation ('tmp_1', pie_hls/solution1/frameSIPO.cpp:85) (0 ns)
+	'icmp' operation ('icmp', pie_hls/solution1/frameSIPO.cpp:85) (2.43 ns)
+	multiplexor before 'phi' operation ('packet_length_V_flag_1') (1.57 ns)
+	'phi' operation ('packet_length_V_flag_1') (0 ns)
+	multiplexor before 'phi' operation ('packet_length_V_flag_8') (1.57 ns)
+	'phi' operation ('packet_length_V_flag_8') (0 ns)
 
 
 ============================================================

@@ -28,7 +28,7 @@ struct axiWord
 struct axiByte
 {
 	   ap_uint<8>  data;
-	   ap_uint<128> user;
+	   ap_uint<2> user;
 };
 
 #endif // GLOBALS_H_ not defined

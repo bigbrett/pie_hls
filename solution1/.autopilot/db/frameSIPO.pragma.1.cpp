@@ -49769,7 +49769,7 @@ struct axiWord
 struct axiByte
 {
     ap_uint<8> data;
-    ap_uint<128> user;
+    ap_uint<2> user;
 };
 #2 "pie_hls/solution1/frameSIPO.cpp" 2
 #1 "/opt/Xilinx/Vivado_HLS/2016.2/common/technology/autopilot/ap_utils.h" 1
@@ -49834,94 +49834,106 @@ struct axiByte
 
 
 void frameSIPO(stream<axiByte> &inData,
-      stream<axiByte> &outData,
-      uint1* sfd_detected,
-      uint1* src_addr,
-      uint1* dest_addr,
-      uint1* ethertype,
-      uint1* ping);
+      uint8_t* header,
+      uint1* livewire);
+
+static ap_uint<16> packet_length;
 #4 "pie_hls/solution1/frameSIPO.cpp" 2
 
 void frameSIPO(stream<axiByte> &inData,
-      stream<axiByte> &outData,
-      uint1* sfd_detected,
-      uint1* src_addr,
-      uint1* dest_addr,
-      uint1* ethertype,
-      uint1* ping)
+      uint8_t* header,
+      uint1* livewire)
 {
 _ssdm_op_SpecInterface(&inData, "axis", 0, 0, 0, 0, "", "", "", 0, 0, 0, 0, "");
-_ssdm_op_SpecInterface(&outData, "axis", 0, 0, 0, 0, "", "", "", 0, 0, 0, 0, "");
 _ssdm_op_SpecPipeline(1, 2, 1, 0, "");
 
  static enum BYTE_COUNTER_STATE { WAIT=0, COUNT } CNT_STATE = WAIT;
 
  static int byte_cnt = 0;
  axiByte curr_byte = {0, 0};
- static uint16 packet_type = 0;
+
+//	static ap_uint<48> src_mac_addr = 0;
+//	static ap_uint<48> dest_mac_addr = 0;
+//	static ap_uint<16> packet_type = 0;
+ static ap_uint<16> packet_length = 0;
+
+ bool sfd_detected = 0;
 
  if (!inData.empty())
  {
-  //inData.read(curr_byte);
-  //outData.write(curr_byte);
-  packet_type = 0;
   switch (CNT_STATE)
   {
   case WAIT:
    inData.read(curr_byte);
+   *livewire = 0;
 
-   byte_cnt = 0;
-   *sfd_detected = 0;
-   *src_addr = 0;
-   *dest_addr = 0;
-   *ethertype = 0;
    if (curr_byte.data == 0xd5)
    {
-       *sfd_detected = 1;
+       *header = 0b10000000;
     CNT_STATE = COUNT;
    }
    else
+   {
+    byte_cnt = 0;
     CNT_STATE = WAIT;
-
+   }
    break;
 
   case COUNT:
    inData.read(curr_byte);
    byte_cnt++;
+   *livewire = 1;
+
    if (byte_cnt <= 6)
-    *dest_addr = 1;
+   {
+    *header = 0b01000000;
+    CNT_STATE = COUNT;
+   }
    else if (byte_cnt <= 12)
-    *src_addr = 1;
+   {
+    *header = 0b00100000;
+    CNT_STATE = COUNT;
+   }
    else if (byte_cnt == 13)
    {
-    *ethertype = 1;
-    packet_type = ((uint16)curr_byte.data) << 8;
+    *header = 0b00010000;
+//				packet_type.range(15,8) = curr_byte.data;
+    CNT_STATE = COUNT;
    }
    else if (byte_cnt == 14)
    {
-    *ethertype = 1;
-    packet_type |= ((uint16)curr_byte.data);
+    *header = 0b00001000;
+//				packet_type.range(7,0) = curr_byte.data;
+    CNT_STATE = COUNT;
+   }
+   else if (byte_cnt < 17)
+    *header = 0b00000100;
+   else if (byte_cnt == 17)
+   {
+    *header = 0xFF;
+    packet_length.range(15,8) = curr_byte.data;
+    CNT_STATE = COUNT;
+   }
+   else if (byte_cnt == 18)
+   {
+    *header = 0xFF;
+    packet_length.range(7,0) = curr_byte.data;
+    CNT_STATE = COUNT;
+   }
+   else if (byte_cnt < 64)
+   {
+    *header = 0b00000010;
+    CNT_STATE = COUNT;
    }
    else
    {
-    *sfd_detected = 0;
-    *src_addr = 0;
-    *dest_addr = 0;
-    *ethertype = 0;
+    *header = 0x1;
     CNT_STATE = WAIT;
    }
    break;
   }
-  if (packet_type == 0x0800)
-   *ping = 1;
-  else
-   *ping = 0;
+
  }
-
-
-
-
-
 
 
 }
