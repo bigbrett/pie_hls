@@ -45800,7 +45800,6 @@ void frameSIPO(stream<axiByte> &inData,
  axiByte curr_byte = {0, 0};
 #pragma empty_line
  static ethHeader curr_header = {0,0,0};
- static ap_uint<16> ipv4_packet_length;
 #pragma empty_line
  if (!inData.empty())
  {
@@ -45808,7 +45807,6 @@ void frameSIPO(stream<axiByte> &inData,
   {
   case WAIT:
    inData.read(curr_byte);
-   ipv4_packet_length = 0;
 #pragma empty_line
 #pragma empty_line
    if (curr_byte.data == 0xd5)
@@ -45825,56 +45823,30 @@ void frameSIPO(stream<axiByte> &inData,
   case COUNT:
    inData.read(curr_byte);
    byte_cnt++;
-   ipv4_packet_length = 0;
+   CNT_STATE = COUNT;
+#pragma empty_line
    if (byte_cnt <= 6)
    {
     curr_header.dest_MAC.range(47-8*(byte_cnt-1),47-8*(byte_cnt-1)-7) = curr_byte.data;
-    CNT_STATE = COUNT;
    }
    else if (byte_cnt <= 12)
    {
     curr_header.src_MAC.range(47-8*(byte_cnt-7),47-8*(byte_cnt-7)-7) = curr_byte.data;
-    CNT_STATE = COUNT;
    }
    else if (byte_cnt == 13)
    {
     curr_header.ethertype.range(15, 8) = curr_byte.data;
-    CNT_STATE = COUNT;
    }
    else if (byte_cnt == 14)
    {
     curr_header.ethertype.range(7,0) = curr_byte.data;
     headerData.write(curr_header);
-    CNT_STATE = COUNT;
-   }
-#pragma empty_line
-#pragma empty_line
-#pragma empty_line
-#pragma empty_line
-   else if (byte_cnt == 17)
-   {
-    ipv4_packet_length.range(15,8) = curr_byte.data;
-    CNT_STATE = COUNT;
-   }
-   else if (byte_cnt == 18)
-   {
-    ipv4_packet_length.range(7,0) = curr_byte.data;
-    CNT_STATE = COUNT;
-   }
-   else if (byte_cnt < 64)
-   {
-    CNT_STATE = COUNT;
    }
    else
    {
     CNT_STATE = WAIT;
    }
-   printf("\n\ndest: %02X:%02X:%02X:%02X:%02X:%02X src: %02X:%02X:%02X:%02X:%02X:%02X, type: %02X:%02X\n\n",
-     curr_header.dest_MAC.range(47,40).to_uint(), curr_header.dest_MAC.range(39,32).to_uint(), curr_header.dest_MAC.range(31,24).to_uint(),
-     curr_header.dest_MAC.range(23,16).to_uint(), curr_header.dest_MAC.range(15,8).to_uint(), curr_header.dest_MAC.range(7,0).to_uint(),
-     curr_header.src_MAC.range(47,40).to_uint(), curr_header.src_MAC.range(39,32).to_uint(), curr_header.src_MAC.range(31,24).to_uint(),
-     curr_header.src_MAC.range(23,16).to_uint(), curr_header.src_MAC.range(15,8).to_uint(), curr_header.src_MAC.range(7,0).to_uint(),
-     (uint8_t)curr_header.ethertype.range(15,8), (uint8_t)curr_header.ethertype.range(7,0));
+#pragma line 73 "/home/brett/workspace/Vivado_WS/pie_hls/solution1/frameSIPO.cpp"
    break;
   }
 #pragma empty_line

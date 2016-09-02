@@ -1,7 +1,7 @@
 <profile>
 
 <section name = "Vivado HLS Report for 'frameSIPO'" level="0">
-<item name = "Date">Fri Sep  2 10:04:03 2016
+<item name = "Date">Fri Sep  2 11:54:00 2016
 </item>
 <item name = "Version">2016.2 (Build 1577090 on Thu Jun 02 16:59:10 MDT 2016)</item>
 <item name = "Project">pie_hls</item>
@@ -204,6 +204,8 @@
 <column name="'tmp_5', pie_hls/solution1/frameSIPO.cpp:41">add, 2.44, 2.44, -, -, -, -, -, -, -, -, -, -, -</column>
 <column name="'tmp_4', pie_hls/solution1/frameSIPO.cpp:56">icmp, 2.52, 4.96, -, -, -, -, -, -, -, -, -, -, -</column>
 <column name="'CNT_STATE_new_4'">phi, 1.57, 6.53, -, -, -, -, -, -, -, -, -, -, </column>
+<column name="'CNT_STATE_new_4'">phi, 0.00, 6.53, -, -, -, -, -, -, -, -, -, -, </column>
+<column name="pie_hls/solution1/frameSIPO.cpp:30">store, 0.00, 6.53, &apos;CNT_STATE_new_4&apos;, -, -, -, -, -, -, -, &apos;CNT_STATE&apos;, -, -</column>
 </table>
 </item>
 </section>

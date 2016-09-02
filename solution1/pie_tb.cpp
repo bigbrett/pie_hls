@@ -24,7 +24,7 @@ int main()
 		cerr << " Error opening input file!" << endl;
 		return -1;
 	}
-	outputFile.open("/home/brett/Desktop/outData.txt");
+	outputFile.open("/home/brett/Desktop/outData.txt", ios::out | ios::trunc);
 	if (!outputFile) {
 		cerr << " Error opening output file!" << endl;
 		return -1;
@@ -45,6 +45,8 @@ int main()
 	for (int i = 0; i < count + 30; i++)
 		frameSIPO(inDataFIFO, header_data);
 
+	inputFile.close();
+
 	// Write the output results to a file
 	while (!header_data.empty())
 	{
@@ -57,9 +59,13 @@ int main()
 			 outData.ethertype.range(15,8).to_uint() << ":" << outData.ethertype.range(7,0).to_uint() << endl;
 	}
 
+	while (outputFile.is_open())
+			outputFile.close();
+
 	// Check the results
+	system("cat outData.txt");
 	returnval = system("diff --brief -w outData.txt golden.dat");
-	if (returnval != 0)
+	if (returnval % 255 != 0)
 	{
 		printf("Test failed !!!\n");
 		returnval = 1;

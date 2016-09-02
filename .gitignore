@@ -4,3 +4,8 @@
 .apc
 .vivado*
 outData.txt
+*.autopilot
+*.log
+*.jou
+*.btree 
+

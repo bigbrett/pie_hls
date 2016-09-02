@@ -1,10 +1,12 @@
-   Compiling ../../pie_tb.cpp in debug mode
-   Compiling ../../frameSIPO.cpp in debug mode
-   Generating csim.exe
+make: `csim.exe' is up to date.
 Attempting to open files... 
 Running DUT 
 
 
 
+34:17:eb:ba:8f:66_4a:1d:70:64:21:96_8:6
+ff:ff:ff:ff:ff:ff_34:17:eb:ba:8f:66_8:0
+ff:ff:ff:ff:ff:ff_34:17:eb:ba:8f:66_8:0
+33:33:0:0:0:1_4a:1d:70:64:21:96_86:dd
 Test passed !
 INFO: [SIM 1] CSim done with 0 errors.

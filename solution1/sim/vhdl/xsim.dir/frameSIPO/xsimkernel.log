@@ -1,7 +1,7 @@
-Running: xsim.dir/frameSIPO/xsimk -simmode gui -wdb frameSIPO.wdb -simrunnum 0 -socket 33248
+Running: xsim.dir/frameSIPO/xsimk -simmode gui -wdb frameSIPO.wdb -simrunnum 0 -socket 53361
 Design successfully loaded
-Design Loading Memory Usage: 49012 KB (Peak: 49376 KB)
+Design Loading Memory Usage: 48996 KB (Peak: 49348 KB)
 Design Loading CPU Usage: 0 ms
 Simulation completed
-Simulation Memory Usage: 130816 KB (Peak: 188284 KB)
-Simulation CPU Usage: 210 ms
+Simulation Memory Usage: 130772 KB (Peak: 188268 KB)
+Simulation CPU Usage: 180 ms

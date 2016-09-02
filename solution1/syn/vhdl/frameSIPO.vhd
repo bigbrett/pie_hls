@@ -382,6 +382,16 @@ begin
     tmp_8_reg_623(2 downto 0) <= "000";
     tmp_10_reg_631(2 downto 0) <= "111";
 
+    ap_NS_fsm0_assign_proc : process (ap_CS_fsm0, ap_sig_45, ap_reg_ppstg_tmp_reg_556_pp0_iter0, ap_reg_ppstg_CNT_STATE_load_reg_560_pp0_iter0, ap_reg_ppstg_tmp_6_reg_575_pp0_iter0, ap_reg_ppstg_tmp_9_reg_579_pp0_iter0, ap_reg_ppstg_tmp_2_reg_583_pp0_iter0, ap_reg_ppstg_tmp_4_reg_587_pp0_iter0, ap_sig_ioackin_headerData_V_src_MAC_V_TREADY, ap_sig_cseq_ST_st2_fsm1_1)
+    begin
+        case ap_CS_fsm0 is
+            when ap_ST_st1_fsm0_0 => 
+                ap_NS_fsm0 <= ap_ST_st1_fsm0_0;
+            when others =>  
+                ap_NS_fsm0 <= "X";
+        end case;
+    end process;
+
     ap_NS_fsm1_assign_proc : process (ap_sig_cseq_ST_st1_fsm0_0, ap_CS_fsm1, ap_sig_45, ap_reg_ppstg_tmp_reg_556_pp0_iter0, ap_reg_ppstg_CNT_STATE_load_reg_560_pp0_iter0, ap_reg_ppstg_tmp_6_reg_575_pp0_iter0, ap_reg_ppstg_tmp_9_reg_579_pp0_iter0, ap_reg_ppstg_tmp_2_reg_583_pp0_iter0, ap_reg_ppstg_tmp_4_reg_587_pp0_iter0, ap_sig_ioackin_headerData_V_src_MAC_V_TREADY, ap_sig_cseq_ST_st2_fsm1_1)
     begin
         case ap_CS_fsm1 is
@@ -401,16 +411,6 @@ begin
                 end if;
             when others =>  
                 ap_NS_fsm1 <= "XX";
-        end case;
-    end process;
-
-    ap_NS_fsm0_assign_proc : process (ap_CS_fsm0, ap_sig_45, ap_reg_ppstg_tmp_reg_556_pp0_iter0, ap_reg_ppstg_CNT_STATE_load_reg_560_pp0_iter0, ap_reg_ppstg_tmp_6_reg_575_pp0_iter0, ap_reg_ppstg_tmp_9_reg_579_pp0_iter0, ap_reg_ppstg_tmp_2_reg_583_pp0_iter0, ap_reg_ppstg_tmp_4_reg_587_pp0_iter0, ap_sig_ioackin_headerData_V_src_MAC_V_TREADY, ap_sig_cseq_ST_st2_fsm1_1)
-    begin
-        case ap_CS_fsm0 is
-            when ap_ST_st1_fsm0_0 => 
-                ap_NS_fsm0 <= ap_ST_st1_fsm0_0;
-            when others =>  
-                ap_NS_fsm0 <= "X";
         end case;
     end process;
     CNT_STATE_load_load_fu_143_p1 <= CNT_STATE;

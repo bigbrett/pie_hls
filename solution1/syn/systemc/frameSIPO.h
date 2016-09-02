@@ -283,8 +283,8 @@ struct frameSIPO : public sc_module {
     void thread_tmp_9_fu_185_p2();
     void thread_tmp_nbreadreq_fu_86_p4();
     void thread_tmp_s_fu_207_p3();
-    void thread_ap_NS_fsm1();
     void thread_ap_NS_fsm0();
+    void thread_ap_NS_fsm1();
     void thread_hdltv_gen();
 };
 

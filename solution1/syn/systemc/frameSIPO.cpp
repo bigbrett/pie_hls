@@ -586,9 +586,8 @@ frameSIPO::frameSIPO(sc_module_name name) : sc_module(name), mVcdFile(0) {
     SC_METHOD(thread_tmp_s_fu_207_p3);
     sensitive << ( tmp_28_fu_203_p1 );
 
-    SC_METHOD(thread_ap_NS_fsm1);
-    sensitive << ( ap_sig_cseq_ST_st1_fsm0_0 );
-    sensitive << ( ap_CS_fsm1 );
+    SC_METHOD(thread_ap_NS_fsm0);
+    sensitive << ( ap_CS_fsm0 );
     sensitive << ( ap_sig_45 );
     sensitive << ( ap_reg_ppstg_tmp_reg_556_pp0_iter0 );
     sensitive << ( ap_reg_ppstg_CNT_STATE_load_reg_560_pp0_iter0 );
@@ -599,8 +598,9 @@ frameSIPO::frameSIPO(sc_module_name name) : sc_module(name), mVcdFile(0) {
     sensitive << ( ap_sig_ioackin_headerData_V_src_MAC_V_TREADY );
     sensitive << ( ap_sig_cseq_ST_st2_fsm1_1 );
 
-    SC_METHOD(thread_ap_NS_fsm0);
-    sensitive << ( ap_CS_fsm0 );
+    SC_METHOD(thread_ap_NS_fsm1);
+    sensitive << ( ap_sig_cseq_ST_st1_fsm0_0 );
+    sensitive << ( ap_CS_fsm1 );
     sensitive << ( ap_sig_45 );
     sensitive << ( ap_reg_ppstg_tmp_reg_556_pp0_iter0 );
     sensitive << ( ap_reg_ppstg_CNT_STATE_load_reg_560_pp0_iter0 );
@@ -1502,6 +1502,17 @@ void frameSIPO::thread_tmp_s_fu_207_p3() {
     tmp_s_fu_207_p3 = esl_concat<4,3>(tmp_28_fu_203_p1.read(), ap_const_lv3_0);
 }
 
+void frameSIPO::thread_ap_NS_fsm0() {
+    switch (ap_CS_fsm0.read().to_uint64()) {
+        case 1 : 
+            ap_NS_fsm0 = ap_ST_st1_fsm0_0;
+break;
+        default : 
+            ap_NS_fsm0 = "X";
+            break;
+    }
+}
+
 void frameSIPO::thread_ap_NS_fsm1() {
     switch (ap_CS_fsm1.read().to_uint64()) {
         case 2 : 
@@ -1531,17 +1542,6 @@ void frameSIPO::thread_ap_NS_fsm1() {
             break;
         default : 
             ap_NS_fsm1 =  (sc_lv<2>) ("XX");
-            break;
-    }
-}
-
-void frameSIPO::thread_ap_NS_fsm0() {
-    switch (ap_CS_fsm0.read().to_uint64()) {
-        case 1 : 
-            ap_NS_fsm0 = ap_ST_st1_fsm0_0;
-break;
-        default : 
-            ap_NS_fsm0 = "X";
             break;
     }
 }
