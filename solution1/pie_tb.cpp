@@ -30,7 +30,7 @@ int main()
 		return -1;
 	}
 
-	// Execute (DUT) Function
+	// Execute (DUT) Function with input from file
 	uint8_t dataTemp;
 	int count = 0;
 	int errCount = 0;
@@ -43,22 +43,20 @@ int main()
 	}
 	cout << endl << endl;
 	for (int i = 0; i < count + 30; i++)
-	{
 		frameSIPO(inDataFIFO, header_data);
-	}
 
 	// Write the output results to a file
 	while (!header_data.empty())
 	{
 		header_data.read(outData);
-		//outData.ethertype >> "." >> outData.dest_MAC >> "." >> outData.src_MAC >> outputFile;
 		outputFile << hex <<
-							outData.dest_MAC.range(47,40).to_uint () << ":" << outData.dest_MAC.range(39,32).to_uint () << ":" << outData.dest_MAC.range(31,24).to_uint() << ":" <<
-							outData.dest_MAC.range(23,16).to_uint() << ":" << outData.dest_MAC.range(15,8).to_uint() << ":" <<  outData.dest_MAC.range(7,0).to_uint() << "_" <<
-							outData.src_MAC.range(47,40).to_uint() << ":" <<  outData.src_MAC.range(39,32).to_uint() << ":" <<  outData.src_MAC.range(31,24).to_uint() << ":" <<
-							outData.src_MAC.range(23,16).to_uint() << ":" <<  outData.src_MAC.range(15,8).to_uint() << ":" <<   outData.src_MAC.range(7,0).to_uint() << "_" <<
-							outData.ethertype.range(15,8).to_uint() << ":" << outData.ethertype.range(7,0).to_uint() << endl;
+			 outData.dest_MAC.range(47,40).to_uint () << ":" << outData.dest_MAC.range(39,32).to_uint () << ":" << outData.dest_MAC.range(31,24).to_uint() << ":" <<
+			 outData.dest_MAC.range(23,16).to_uint() << ":" << outData.dest_MAC.range(15,8).to_uint() << ":" <<  outData.dest_MAC.range(7,0).to_uint() << "_" <<
+			 outData.src_MAC.range(47,40).to_uint() << ":" <<  outData.src_MAC.range(39,32).to_uint() << ":" <<  outData.src_MAC.range(31,24).to_uint() << ":" <<
+			 outData.src_MAC.range(23,16).to_uint() << ":" <<  outData.src_MAC.range(15,8).to_uint() << ":" <<   outData.src_MAC.range(7,0).to_uint() << "_" <<
+			 outData.ethertype.range(15,8).to_uint() << ":" << outData.ethertype.range(7,0).to_uint() << endl;
 	}
+
 	// Check the results
 	returnval = system("diff --brief -w outData.txt golden.dat");
 	if (returnval != 0)
