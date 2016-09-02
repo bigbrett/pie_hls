@@ -11,14 +11,13 @@ int main()
 	int returnval = 0;
 
 	axiByte inData = {0, 0};
-	axiByte outData;
+	ethHeader outData = {0,0};
 	stream<axiByte>	inDataFIFO("inDataFIFO");
-
-	uint8_t header_data = 0;
-	uint1 livewire = 0;
+	stream<ethHeader> header_data("header_data");
 
 	// TB Files
-	ifstream inputFile, outputFile;
+	ifstream inputFile;
+	ofstream outputFile;
 	cerr << "Attempting to open files... " << endl;
 	inputFile.open("/home/brett/Desktop/myfile.dat");
 	if (!inputFile)	{
@@ -39,30 +38,36 @@ int main()
 	while (inputFile >> hex >> dataTemp )
 	{
 		inData.data = dataTemp;
-		//printf("byte %d = 0x%x\n", count, dataTemp);
 		inDataFIFO.write(inData);
 		count++;
 	}
 	cout << endl << endl;
 	for (int i = 0; i < count + 30; i++)
 	{
-		frameSIPO(inDataFIFO, &header_data, &livewire);
-//		printf("byte(%04d)  %02X:  [%d], %d\n", i, header_data,livewire, packet_length);
-
+		frameSIPO(inDataFIFO, header_data);
 	}
 
 	// Write the output results to a file
-	//...
-
+	while (!header_data.empty())
+	{
+		header_data.read(outData);
+		//outData.ethertype >> "." >> outData.dest_MAC >> "." >> outData.src_MAC >> outputFile;
+		outputFile << hex <<
+							outData.dest_MAC.range(47,40).to_uint () << ":" << outData.dest_MAC.range(39,32).to_uint () << ":" << outData.dest_MAC.range(31,24).to_uint() << ":" <<
+							outData.dest_MAC.range(23,16).to_uint() << ":" << outData.dest_MAC.range(15,8).to_uint() << ":" <<  outData.dest_MAC.range(7,0).to_uint() << "_" <<
+							outData.src_MAC.range(47,40).to_uint() << ":" <<  outData.src_MAC.range(39,32).to_uint() << ":" <<  outData.src_MAC.range(31,24).to_uint() << ":" <<
+							outData.src_MAC.range(23,16).to_uint() << ":" <<  outData.src_MAC.range(15,8).to_uint() << ":" <<   outData.src_MAC.range(7,0).to_uint() << "_" <<
+							outData.ethertype.range(15,8).to_uint() << ":" << outData.ethertype.range(7,0).to_uint() << endl;
+	}
 	// Check the results
-//	returnval = system("diff --brief -w output.dat output.golden.dat");
-//	if (returnval != 0)
-//	{
-//		printf("Test failed !!!\n");
-//		returnval = 1;
-//	}
-//	else
-//		printf("Test passed !\n");
+	returnval = system("diff --brief -w outData.txt golden.dat");
+	if (returnval != 0)
+	{
+		printf("Test failed !!!\n");
+		returnval = 1;
+	}
+	else
+		printf("Test passed !\n");
 
 
 		return returnval;

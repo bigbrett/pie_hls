@@ -44,12 +44,12 @@ set TargetInfo "xc7z020:clg484:-1"
 set SourceFiles {sc {} c frameSIPO.cpp}
 set SourceFlags {sc {} c {{}}}
 set DirectiveFile {/home/brett/workspace/Vivado_WS/pie_hls/solution1/solution1.directive}
-set TBFiles {verilog {pie_tb.cpp ../../../../Desktop/outData.txt ../../../../Desktop/myfile.dat} bc {pie_tb.cpp ../../../../Desktop/outData.txt ../../../../Desktop/myfile.dat} vhdl {pie_tb.cpp ../../../../Desktop/outData.txt ../../../../Desktop/myfile.dat} sc {pie_tb.cpp ../../../../Desktop/outData.txt ../../../../Desktop/myfile.dat} cas {pie_tb.cpp ../../../../Desktop/outData.txt ../../../../Desktop/myfile.dat} c {}}
+set TBFiles {verilog {pie_tb.cpp ../../../../Desktop/outData.txt ../../../../Desktop/myfile.dat golden.dat} bc {pie_tb.cpp ../../../../Desktop/outData.txt ../../../../Desktop/myfile.dat golden.dat} sc {pie_tb.cpp ../../../../Desktop/outData.txt ../../../../Desktop/myfile.dat golden.dat} vhdl {pie_tb.cpp ../../../../Desktop/outData.txt ../../../../Desktop/myfile.dat golden.dat} c {} cas {pie_tb.cpp ../../../../Desktop/outData.txt ../../../../Desktop/myfile.dat golden.dat}}
 set SpecLanguage "C"
 set TVInFiles {bc {} c {} sc {} cas {} vhdl {} verilog {}}
 set TVOutFiles {bc {} c {} sc {} cas {} vhdl {} verilog {}}
-set TBTops {verilog {} bc {} vhdl {} sc {} cas {} c {}}
-set TBInstNames {verilog {} bc {} vhdl {} sc {} cas {} c {}}
+set TBTops {verilog {} bc {} sc {} vhdl {} c {} cas {}}
+set TBInstNames {verilog {} bc {} sc {} vhdl {} c {} cas {}}
 set ExtraGlobalOptions {"area_timing" 1 "clock_gate" 1 "impl_flow" map "power_gate" 0}
 set PlatformFiles {{DefaultPlatform {xilinx/zynq/zynq xilinx/zynq/zynq_fpv6}}}
 set DefaultPlatform "DefaultPlatform"

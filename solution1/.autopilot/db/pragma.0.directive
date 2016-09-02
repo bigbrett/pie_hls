@@ -7,6 +7,12 @@
 </pragma>
 </directive>
 <directive functionLabel="" functionName="frameSIPO" label="">
+<pragma name="INTERFACE">
+<option name="axis" positionalBoolean="mode" value=""/>
+<option name="port" positionalBoolean="4" value="headerData"/>
+</pragma>
+</directive>
+<directive functionLabel="" functionName="frameSIPO" label="">
 <pragma name="PIPELINE">
 <option name="II" value="1"/>
 <option name="enable_flush" positionalBoolean="1" value=""/>

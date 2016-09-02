@@ -49756,6 +49756,7 @@ typedef unsigned int __attribute__ ((bitwidth(2048))) uint2048;
 
 
 using namespace hls;
+using namespace std;
 
 
 struct axiWord
@@ -49770,6 +49771,13 @@ struct axiByte
 {
     ap_uint<8> data;
     ap_uint<2> user;
+};
+
+struct ethHeader
+{
+ ap_uint<48> src_MAC;
+ ap_uint<48> dest_MAC;
+ ap_uint<16> ethertype;
 };
 #2 "pie_hls/solution1/frameSIPO.cpp" 2
 #1 "/opt/Xilinx/Vivado_HLS/2016.2/common/technology/autopilot/ap_utils.h" 1
@@ -49834,30 +49842,23 @@ struct axiByte
 
 
 void frameSIPO(stream<axiByte> &inData,
-      uint8_t* header,
-      uint1* livewire);
-
-static int packet_length;
+      stream<ethHeader> &headerData);
 #4 "pie_hls/solution1/frameSIPO.cpp" 2
 
 void frameSIPO(stream<axiByte> &inData,
-      uint8_t* header,
-      uint1* livewire)
+      stream<ethHeader> &headerData)
 {
 _ssdm_op_SpecInterface(&inData, "axis", 0, 0, 0, 0, "", "", "", 0, 0, 0, 0, "");
+_ssdm_op_SpecInterface(&headerData, "axis", 0, 0, 0, 0, "", "", "", 0, 0, 0, 0, "");
+
 _ssdm_op_SpecPipeline(1, 2, 1, 0, "");
 
  static enum BYTE_COUNTER_STATE { WAIT=0, COUNT } CNT_STATE = WAIT;
 
- static int byte_cnt = 0;
- axiByte curr_byte = {0, 0};
+ static int byte_cnt = 0; // number of bytes rcvd since SFD
+ axiByte curr_byte = {0, 0}; // current byte tdata and tuser
 
-//	static ap_uint<48> src_mac_addr = 0;
-//	static ap_uint<48> dest_mac_addr = 0;
-//	static ap_uint<16> packet_type = 0;
- //static int packet_length;
-
- bool sfd_detected = 0;
+ static ethHeader curr_header = {0,0,0}; // holds header of current frame
 
  if (!inData.empty())
  {
@@ -49865,16 +49866,13 @@ _ssdm_op_SpecPipeline(1, 2, 1, 0, "");
   {
   case WAIT:
    inData.read(curr_byte);
-   packet_length = 0;
-   *header = 0;
-   *livewire = 0;
 
+   // if SFD detected, go to count state
    if (curr_byte.data == 0xd5)
    {
-       *header = 0b10000000;
     CNT_STATE = COUNT;
    }
-   else
+   else // stay in wait state
    {
     byte_cnt = 0;
     CNT_STATE = WAIT;
@@ -49884,63 +49882,37 @@ _ssdm_op_SpecPipeline(1, 2, 1, 0, "");
   case COUNT:
    inData.read(curr_byte);
    byte_cnt++;
-   *livewire = 1;
+   CNT_STATE = COUNT;
 
    if (byte_cnt <= 6)
-   {
-    *header = 0b01000000;
-    packet_length = 0;
-    CNT_STATE = COUNT;
+   { // bytes < 6 get stored as dest mac address
+    curr_header.dest_MAC.range(47-8*(byte_cnt-1),47-8*(byte_cnt-1)-7) = curr_byte.data;
    }
    else if (byte_cnt <= 12)
-   {
-    *header = 0b00100000;
-    packet_length = 0;
-    CNT_STATE = COUNT;
+   { // 6 < bytes < 12 get stored as dest mac address
+    curr_header.src_MAC.range(47-8*(byte_cnt-7),47-8*(byte_cnt-7)-7) = curr_byte.data;
    }
    else if (byte_cnt == 13)
-   {
-    *header = 0b00010000;
-    packet_length = 0;
-    CNT_STATE = COUNT;
+   { // byte 13 stored as ethertype msByte
+    curr_header.ethertype.range(15, 8) = curr_byte.data;
    }
    else if (byte_cnt == 14)
-   {
-    *header = 0b00001000;
-    packet_length = 0;
-    CNT_STATE = COUNT;
-   }
-   else if (byte_cnt < 17)
-   {
-    *header = 0b00000100;
-    packet_length = 0;
-   }
-   else if (byte_cnt == 17)
-   {
-    *header = 0xFF;
-//				packet_length.range(15,8) = curr_byte.data;
-    packet_length = 0xFF;
-    CNT_STATE = COUNT;
-   }
-   else if (byte_cnt == 18)
-   {
-    *header = 0xFF;
-//				packet_length.range(7,0) = curr_byte.data;
-    packet_length = 0xFF;
-    CNT_STATE = COUNT;
-   }
-   else if (byte_cnt < 64)
-   {
-    *header = 0b00000010;
-    packet_length = 0;
-    CNT_STATE = COUNT;
+   { // byte 14 stored as ethertype lsByte
+    curr_header.ethertype.range(7,0) = curr_byte.data;
+    headerData.write(curr_header);
    }
    else
    {
-    *header = 0x1;
-    packet_length = 0;
     CNT_STATE = WAIT;
    }
+   /*
+			printf("\n\ndest: %02X:%02X:%02X:%02X:%02X:%02X src: %02X:%02X:%02X:%02X:%02X:%02X, type: %02X:%02X\n\n",
+					curr_header.dest_MAC.range(47,40).to_uint(), curr_header.dest_MAC.range(39,32).to_uint(), curr_header.dest_MAC.range(31,24).to_uint(),
+					curr_header.dest_MAC.range(23,16).to_uint(), curr_header.dest_MAC.range(15,8).to_uint(),  curr_header.dest_MAC.range(7,0).to_uint(),
+					curr_header.src_MAC.range(47,40).to_uint(),  curr_header.src_MAC.range(39,32).to_uint(),  curr_header.src_MAC.range(31,24).to_uint(),
+					curr_header.src_MAC.range(23,16).to_uint(),  curr_header.src_MAC.range(15,8).to_uint(),   curr_header.src_MAC.range(7,0).to_uint(),
+					(uint8_t)curr_header.ethertype.range(15,8), (uint8_t)curr_header.ethertype.range(7,0));
+			*/
    break;
   }
 

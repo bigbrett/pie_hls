@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'frameSIPO'
 ================================================================
-* Date:           Thu Sep  1 12:30:46 2016
+* Date:           Fri Sep  2 10:04:03 2016
 
 * Version:        2016.2 (Build 1577090 on Thu Jun 02 16:59:10 MDT 2016)
 * Project:        pie_hls
@@ -20,7 +20,7 @@
     +--------+-------+----------+------------+
     |  Clock | Target| Estimated| Uncertainty|
     +--------+-------+----------+------------+
-    |ap_clk  |   8.00|      7.88|        1.00|
+    |ap_clk  |   8.00|      7.70|        1.00|
     +--------+-------+----------+------------+
 
 + Latency (clock cycles): 
@@ -79,12 +79,12 @@ IsGatedGlobalClock: 0
 2 --> 
 * FSM state operations: 
 
- <State 1>: 7.88ns
+ <State 1>: 7.70ns
 ST_1: tmp [1/1] 0.00ns
-:7  %tmp = call i1 @_ssdm_op_NbReadReq.axis.i8P.i2P(i8* %inData_V_data_V, i2* %inData_V_user_V, i32 1)
+codeRepl:9  %tmp = call i1 @_ssdm_op_NbReadReq.axis.i8P.i2P(i8* %inData_V_data_V, i2* %inData_V_user_V, i32 1)
 
 ST_1: stg_4 [1/1] 0.00ns
-:8  br i1 %tmp, label %1, label %._crit_edge
+codeRepl:10  br i1 %tmp, label %0, label %._crit_edge90
 
 ST_1: CNT_STATE_load [1/1] 0.00ns
 :0  %CNT_STATE_load = load i1* @CNT_STATE, align 1
@@ -95,169 +95,289 @@ ST_1: byte_cnt_load [1/1] 0.00ns
 ST_1: empty [1/1] 0.00ns
 :2  %empty = call { i8, i2 } @_ssdm_op_Read.axis.volatile.i8P.i2P(i8* %inData_V_data_V, i2* %inData_V_user_V)
 
-ST_1: stg_8 [1/1] 0.00ns
-:3  br i1 %CNT_STATE_load, label %5, label %2
+ST_1: tmp_data_V [1/1] 0.00ns
+:3  %tmp_data_V = extractvalue { i8, i2 } %empty, 0
 
-ST_1: tmp_data_V [1/1] 0.00ns (grouped into LUT with out node tmp_3)
-:0  %tmp_data_V = extractvalue { i8, i2 } %empty, 0
+ST_1: stg_9 [1/1] 0.00ns
+:4  br i1 %CNT_STATE_load, label %3, label %1
 
-ST_1: tmp_3 [1/1] 2.00ns (out node of the LUT)
-:2  %tmp_3 = icmp eq i8 %tmp_data_V, -43
+ST_1: tmp_3 [1/1] 2.00ns
+:0  %tmp_3 = icmp eq i8 %tmp_data_V, -43
 
 ST_1: stg_11 [1/1] 1.57ns
-:3  br i1 %tmp_3, label %4, label %3
+:1  br i1 %tmp_3, label %mergeST, label %2
 
 ST_1: stg_12 [1/1] 1.57ns
 :0  store i32 0, i32* @byte_cnt, align 4
 
 ST_1: stg_13 [1/1] 1.57ns
-:1  br label %4
-
-ST_1: storemerge [1/1] 0.00ns
-:1  %storemerge = phi i1 [ false, %3 ], [ true, %2 ]
-
-ST_1: stg_15 [1/1] 1.57ns
-:2  store i1 %storemerge, i1* @CNT_STATE, align 1
+:1  br label %mergeST
 
 ST_1: tmp_5 [1/1] 2.44ns
 :0  %tmp_5 = add nsw i32 %byte_cnt_load, 1
 
-ST_1: stg_17 [1/1] 1.57ns
+ST_1: stg_15 [1/1] 1.57ns
 :1  store i32 %tmp_5, i32* @byte_cnt, align 4
 
 ST_1: tmp_6 [1/1] 2.52ns
-:3  %tmp_6 = icmp slt i32 %tmp_5, 7
+:2  %tmp_6 = icmp slt i32 %tmp_5, 7
 
-ST_1: stg_19 [1/1] 0.00ns
-:4  br i1 %tmp_6, label %6, label %7
-
-ST_1: tmp_7 [1/1] 2.52ns
-:0  %tmp_7 = icmp slt i32 %tmp_5, 13
-
-ST_1: stg_21 [1/1] 0.00ns
-:1  br i1 %tmp_7, label %8, label %9
-
-ST_1: tmp_8 [1/1] 2.52ns
-:0  %tmp_8 = icmp eq i32 %tmp_5, 13
-
-ST_1: stg_23 [1/1] 0.00ns
-:1  br i1 %tmp_8, label %10, label %11
+ST_1: stg_17 [1/1] 0.00ns
+:4  br i1 %tmp_6, label %4, label %5
 
 ST_1: tmp_9 [1/1] 2.52ns
-:0  %tmp_9 = icmp eq i32 %tmp_5, 14
+:0  %tmp_9 = icmp slt i32 %tmp_5, 13
 
-ST_1: stg_25 [1/1] 0.00ns
-:1  br i1 %tmp_9, label %12, label %13
+ST_1: stg_19 [1/1] 0.00ns
+:2  br i1 %tmp_9, label %6, label %7
 
-ST_1: tmp_s [1/1] 2.52ns
-:0  %tmp_s = icmp slt i32 %tmp_5, 17
+ST_1: tmp_2 [1/1] 2.52ns
+:0  %tmp_2 = icmp eq i32 %tmp_5, 13
 
-ST_1: stg_27 [1/1] 1.94ns
-:1  br i1 %tmp_s, label %mergeST, label %_ifconv
+ST_1: stg_21 [1/1] 0.00ns
+:2  br i1 %tmp_2, label %8, label %9
 
-ST_1: p_off [1/1] 2.44ns
-_ifconv:0  %p_off = add i32 %byte_cnt_load, -16
+ST_1: tmp_4 [1/1] 2.52ns
+:0  %tmp_4 = icmp eq i32 %tmp_5, 14
 
-ST_1: tmp_2 [1/1] 0.00ns
-_ifconv:1  %tmp_2 = call i31 @_ssdm_op_PartSelect.i31.i32.i32.i32(i32 %p_off, i32 1, i32 31)
+ST_1: stg_23 [1/1] 1.57ns
+:1  br i1 %tmp_4, label %10, label %mergeST
 
-ST_1: icmp [1/1] 2.50ns
-_ifconv:2  %icmp = icmp eq i31 %tmp_2, 0
-
-ST_1: tmp_4 [1/1] 0.00ns
-_ifconv:3  %tmp_4 = call i26 @_ssdm_op_PartSelect.i26.i32.i32.i32(i32 %tmp_5, i32 6, i32 31)
-
-ST_1: icmp5 [1/1] 2.43ns
-_ifconv:4  %icmp5 = icmp slt i26 %tmp_4, 1
-
-ST_1: tmp_1 [1/1] 1.37ns
-_ifconv:6  %tmp_1 = or i1 %icmp, %icmp5
-
-ST_1: stg_34 [1/1] 1.57ns
-_ifconv:9  store i1 %tmp_1, i1* @CNT_STATE, align 1
-
-ST_1: stg_35 [1/1] 1.57ns
-:0  store i1 true, i1* @CNT_STATE, align 1
-
-ST_1: stg_36 [1/1] 1.94ns
-:1  br label %mergeST
-
-ST_1: stg_37 [1/1] 1.57ns
-:0  store i1 true, i1* @CNT_STATE, align 1
-
-ST_1: stg_38 [1/1] 1.94ns
-:1  br label %mergeST
-
-ST_1: stg_39 [1/1] 1.57ns
-:0  store i1 true, i1* @CNT_STATE, align 1
-
-ST_1: stg_40 [1/1] 1.94ns
-:1  br label %mergeST
-
-ST_1: stg_41 [1/1] 1.57ns
-:0  store i1 true, i1* @CNT_STATE, align 1
-
-ST_1: stg_42 [1/1] 1.94ns
-:1  br label %mergeST
-
-
- <State 2>: 3.31ns
-ST_2: stg_43 [1/1] 0.00ns
-:0  call void (...)* @_ssdm_op_SpecBitsMap(i8* %inData_V_data_V), !map !47
-
-ST_2: stg_44 [1/1] 0.00ns
-:1  call void (...)* @_ssdm_op_SpecBitsMap(i2* %inData_V_user_V), !map !51
-
-ST_2: stg_45 [1/1] 0.00ns
-:2  call void (...)* @_ssdm_op_SpecBitsMap(i8* %header), !map !55
-
-ST_2: stg_46 [1/1] 0.00ns
-:3  call void (...)* @_ssdm_op_SpecBitsMap(i1* %livewire), !map !59
-
-ST_2: stg_47 [1/1] 0.00ns
-:4  call void (...)* @_ssdm_op_SpecTopModule([10 x i8]* @frameSIPO_str) nounwind
-
-ST_2: stg_48 [1/1] 0.00ns
-:5  call void (...)* @_ssdm_op_SpecInterface(i8* %inData_V_data_V, i2* %inData_V_user_V, [5 x i8]* @p_str, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str1, [1 x i8]* @p_str1, [1 x i8]* @p_str1, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str1) nounwind
-
-ST_2: stg_49 [1/1] 0.00ns
-:6  call void (...)* @_ssdm_op_SpecPipeline(i32 1, i32 2, i32 1, i32 0, [1 x i8]* @p_str1) nounwind
-
-ST_2: stg_50 [1/1] 0.00ns
-:1  call void @_ssdm_op_Write.ap_auto.i1P(i1* %livewire, i1 false)
-
-ST_2: header_new [1/1] 0.00ns
-:0  %header_new = phi i8 [ 0, %3 ], [ -128, %2 ]
-
-ST_2: stg_52 [1/1] 1.94ns
+ST_1: stg_24 [1/1] 1.57ns
 :3  br label %mergeST
 
-ST_2: stg_53 [1/1] 0.00ns
-:2  call void @_ssdm_op_Write.ap_auto.i1P(i1* %livewire, i1 true)
+ST_1: stg_25 [1/1] 1.57ns
+:2  br label %mergeST
 
-ST_2: storemerge1_cast [1/1] 0.00ns (grouped into LUT with out node storemerge2)
-_ifconv:5  %storemerge1_cast = select i1 %icmp, i3 -1, i3 2
+ST_1: tmp_28 [1/1] 0.00ns
+:0  %tmp_28 = trunc i32 %tmp_5 to i4
 
-ST_2: storemerge2 [1/1] 1.37ns (out node of the LUT)
-_ifconv:7  %storemerge2 = select i1 %tmp_1, i3 %storemerge1_cast, i3 1
+ST_1: tmp_s [1/1] 0.00ns
+:1  %tmp_s = call i7 @_ssdm_op_BitConcatenate.i7.i4.i3(i4 %tmp_28, i3 0)
 
-ST_2: storemerge2_cast [1/1] 0.00ns
-_ifconv:8  %storemerge2_cast = sext i3 %storemerge2 to i8
+ST_1: Hi_assign_1 [1/1] 1.72ns
+:2  %Hi_assign_1 = sub i7 -25, %tmp_s
 
-ST_2: stg_57 [1/1] 1.94ns
-_ifconv:10  br label %mergeST
+ST_1: Lo_assign_1 [1/1] 1.72ns
+:3  %Lo_assign_1 = sub i7 -32, %tmp_s
 
-ST_2: header_new_6 [1/1] 0.00ns
-mergeST:0  %header_new_6 = phi i8 [ %header_new, %4 ], [ 32, %8 ], [ 8, %12 ], [ 4, %13 ], [ %storemerge2_cast, %_ifconv ], [ 16, %10 ], [ 64, %6 ]
+ST_1: tmp_29 [1/1] 1.97ns
+:5  %tmp_29 = icmp ugt i7 %Lo_assign_1, %Hi_assign_1
 
-ST_2: stg_59 [1/1] 0.00ns
-mergeST:1  call void @_ssdm_op_Write.ap_auto.i8P(i8* %header, i8 %header_new_6)
+ST_1: tmp_30 [1/1] 0.00ns
+:6  %tmp_30 = trunc i7 %Lo_assign_1 to i6
 
-ST_2: stg_60 [1/1] 0.00ns
-mergeST:2  br label %._crit_edge
+ST_1: tmp_31 [1/1] 0.00ns
+:7  %tmp_31 = trunc i7 %Hi_assign_1 to i6
 
-ST_2: stg_61 [1/1] 0.00ns
-._crit_edge:0  ret void
+ST_1: stg_33 [1/1] 1.57ns
+:27  br label %mergeST
+
+ST_1: tmp_1 [1/1] 0.00ns
+:0  %tmp_1 = shl i32 %tmp_5, 3
+
+ST_1: Hi_assign [1/1] 2.44ns
+:1  %Hi_assign = sub i32 55, %tmp_1
+
+ST_1: Lo_assign [1/1] 2.44ns
+:2  %Lo_assign = sub i32 48, %tmp_1
+
+ST_1: tmp_8 [1/1] 0.00ns
+:5  %tmp_8 = trunc i32 %Lo_assign to i6
+
+ST_1: tmp_10 [1/1] 0.00ns
+:6  %tmp_10 = trunc i32 %Hi_assign to i6
+
+ST_1: stg_39 [1/1] 1.57ns
+:26  br label %mergeST
+
+ST_1: CNT_STATE_new_4 [1/1] 0.00ns
+mergeST:0  %CNT_STATE_new_4 = phi i1 [ false, %2 ], [ true, %1 ], [ true, %6 ], [ true, %10 ], [ false, %9 ], [ true, %8 ], [ true, %4 ]
+
+ST_1: stg_41 [1/1] 0.00ns
+mergeST:1  store i1 %CNT_STATE_new_4, i1* @CNT_STATE, align 1
+
+
+ <State 2>: 6.98ns
+ST_2: stg_42 [1/1] 0.00ns
+codeRepl:0  call void (...)* @_ssdm_op_SpecBitsMap(i8* %inData_V_data_V), !map !61
+
+ST_2: stg_43 [1/1] 0.00ns
+codeRepl:1  call void (...)* @_ssdm_op_SpecBitsMap(i2* %inData_V_user_V), !map !65
+
+ST_2: stg_44 [1/1] 0.00ns
+codeRepl:2  call void (...)* @_ssdm_op_SpecBitsMap(i48* %headerData_V_src_MAC_V), !map !69
+
+ST_2: stg_45 [1/1] 0.00ns
+codeRepl:3  call void (...)* @_ssdm_op_SpecBitsMap(i48* %headerData_V_dest_MAC_V), !map !73
+
+ST_2: stg_46 [1/1] 0.00ns
+codeRepl:4  call void (...)* @_ssdm_op_SpecBitsMap(i16* %headerData_V_ethertype_V), !map !77
+
+ST_2: stg_47 [1/1] 0.00ns
+codeRepl:5  call void (...)* @_ssdm_op_SpecTopModule([10 x i8]* @frameSIPO_str) nounwind
+
+ST_2: stg_48 [1/1] 0.00ns
+codeRepl:6  call void (...)* @_ssdm_op_SpecInterface(i8* %inData_V_data_V, i2* %inData_V_user_V, [5 x i8]* @p_str, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str1, [1 x i8]* @p_str1, [1 x i8]* @p_str1, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str1) nounwind
+
+ST_2: stg_49 [1/1] 0.00ns
+codeRepl:7  call void (...)* @_ssdm_op_SpecInterface(i48* %headerData_V_src_MAC_V, i48* %headerData_V_dest_MAC_V, i16* %headerData_V_ethertype_V, [5 x i8]* @p_str, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str1, [1 x i8]* @p_str1, [1 x i8]* @p_str1, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str1) nounwind
+
+ST_2: stg_50 [1/1] 0.00ns
+codeRepl:8  call void (...)* @_ssdm_op_SpecPipeline(i32 1, i32 2, i32 1, i32 0, [1 x i8]* @p_str1) nounwind
+
+ST_2: p_Val2_s [1/1] 0.00ns
+:3  %p_Val2_s = load i48* @curr_header_dest_MAC_V, align 8
+
+ST_2: p_Val2_3 [1/1] 0.00ns
+:1  %p_Val2_3 = load i48* @curr_header_src_MAC_V, align 8
+
+ST_2: p_Val2_2 [1/1] 0.00ns
+:1  %p_Val2_2 = load i16* @curr_header_ethertype_V, align 2
+
+ST_2: p_Result_4 [1/1] 0.00ns
+:0  %p_Result_4 = call i16 @llvm.part.set.i16.i8(i16 %p_Val2_2, i8 %tmp_data_V, i32 0, i32 7)
+
+ST_2: stg_55 [1/1] 1.57ns
+:1  store i16 %p_Result_4, i16* @curr_header_ethertype_V, align 8
+
+ST_2: stg_56 [1/1] 0.00ns
+:2  call void @_ssdm_op_Write.axis.volatile.i48P.i48P.i16P(i48* %headerData_V_src_MAC_V, i48* %headerData_V_dest_MAC_V, i16* %headerData_V_ethertype_V, i48 %p_Val2_3, i48 %p_Val2_s, i16 %p_Result_4)
+
+ST_2: p_Result_2 [1/1] 0.00ns
+:0  %p_Result_2 = call i16 @llvm.part.set.i16.i8(i16 %p_Val2_2, i8 %tmp_data_V, i32 8, i32 15)
+
+ST_2: stg_58 [1/1] 1.57ns
+:1  store i16 %p_Result_2, i16* @curr_header_ethertype_V, align 8
+
+ST_2: loc_V_1 [1/1] 0.00ns (grouped into LUT with out node tmp_40)
+:4  %loc_V_1 = zext i8 %tmp_data_V to i48
+
+ST_2: tmp_32 [1/1] 1.72ns
+:8  %tmp_32 = sub i6 -17, %tmp_30
+
+ST_2: tmp_33 [1/1] 0.00ns (grouped into LUT with out node tmp_36)
+:9  %tmp_33 = select i1 %tmp_29, i6 %tmp_30, i6 %tmp_31
+
+ST_2: tmp_34 [1/1] 0.00ns (grouped into LUT with out node p_demorgan)
+:10  %tmp_34 = select i1 %tmp_29, i6 %tmp_31, i6 %tmp_30
+
+ST_2: tmp_35 [1/1] 0.00ns (grouped into LUT with out node tmp_40)
+:11  %tmp_35 = select i1 %tmp_29, i6 %tmp_32, i6 %tmp_30
+
+ST_2: tmp_36 [1/1] 1.72ns (out node of the LUT)
+:12  %tmp_36 = sub i6 -17, %tmp_33
+
+ST_2: tmp_37 [1/1] 0.00ns (grouped into LUT with out node tmp_40)
+:13  %tmp_37 = zext i6 %tmp_35 to i48
+
+ST_2: tmp_38 [1/1] 0.00ns (grouped into LUT with out node p_demorgan)
+:14  %tmp_38 = zext i6 %tmp_34 to i48
+
+ST_2: tmp_39 [1/1] 0.00ns (grouped into LUT with out node p_demorgan)
+:15  %tmp_39 = zext i6 %tmp_36 to i48
+
+ST_2: tmp_40 [1/1] 2.01ns (out node of the LUT)
+:16  %tmp_40 = shl i48 %loc_V_1, %tmp_37
+
+ST_2: tmp_41 [1/1] 0.00ns (grouped into LUT with out node p_Result_1)
+:17  %tmp_41 = call i48 @llvm.part.select.i48(i48 %tmp_40, i32 47, i32 0)
+
+ST_2: tmp_42 [1/1] 0.00ns (grouped into LUT with out node p_Result_1)
+:18  %tmp_42 = select i1 %tmp_29, i48 %tmp_41, i48 %tmp_40
+
+ST_2: tmp_43 [1/1] 0.00ns (grouped into LUT with out node p_demorgan)
+:19  %tmp_43 = shl i48 -1, %tmp_38
+
+ST_2: tmp_44 [1/1] 0.00ns (grouped into LUT with out node p_demorgan)
+:20  %tmp_44 = lshr i48 -1, %tmp_39
+
+ST_2: p_demorgan [1/1] 1.37ns (out node of the LUT)
+:21  %p_demorgan = and i48 %tmp_43, %tmp_44
+
+ST_2: tmp_45 [1/1] 0.00ns (grouped into LUT with out node p_Result_1)
+:22  %tmp_45 = xor i48 %p_demorgan, -1
+
+ST_2: tmp_46 [1/1] 0.00ns (grouped into LUT with out node p_Result_1)
+:23  %tmp_46 = and i48 %p_Val2_3, %tmp_45
+
+ST_2: tmp_47 [1/1] 0.00ns (grouped into LUT with out node p_Result_1)
+:24  %tmp_47 = and i48 %tmp_42, %p_demorgan
+
+ST_2: p_Result_1 [1/1] 1.37ns (out node of the LUT)
+:25  %p_Result_1 = or i48 %tmp_46, %tmp_47
+
+ST_2: stg_78 [1/1] 0.00ns
+:26  store i48 %p_Result_1, i48* @curr_header_src_MAC_V, align 8
+
+ST_2: loc_V [1/1] 0.00ns (grouped into LUT with out node tmp_19)
+:3  %loc_V = zext i8 %tmp_data_V to i48
+
+ST_2: tmp_7 [1/1] 2.52ns
+:4  %tmp_7 = icmp ugt i32 %Lo_assign, %Hi_assign
+
+ST_2: tmp_11 [1/1] 1.72ns
+:7  %tmp_11 = sub i6 -17, %tmp_8
+
+ST_2: tmp_12 [1/1] 0.00ns (grouped into LUT with out node tmp_15)
+:8  %tmp_12 = select i1 %tmp_7, i6 %tmp_8, i6 %tmp_10
+
+ST_2: tmp_13 [1/1] 0.00ns (grouped into LUT with out node p_demorgan3)
+:9  %tmp_13 = select i1 %tmp_7, i6 %tmp_10, i6 %tmp_8
+
+ST_2: tmp_14 [1/1] 0.00ns (grouped into LUT with out node tmp_19)
+:10  %tmp_14 = select i1 %tmp_7, i6 %tmp_11, i6 %tmp_8
+
+ST_2: tmp_15 [1/1] 1.72ns (out node of the LUT)
+:11  %tmp_15 = sub i6 -17, %tmp_12
+
+ST_2: tmp_16 [1/1] 0.00ns (grouped into LUT with out node tmp_19)
+:12  %tmp_16 = zext i6 %tmp_14 to i48
+
+ST_2: tmp_17 [1/1] 0.00ns (grouped into LUT with out node p_demorgan3)
+:13  %tmp_17 = zext i6 %tmp_13 to i48
+
+ST_2: tmp_18 [1/1] 0.00ns (grouped into LUT with out node p_demorgan3)
+:14  %tmp_18 = zext i6 %tmp_15 to i48
+
+ST_2: tmp_19 [1/1] 2.01ns (out node of the LUT)
+:15  %tmp_19 = shl i48 %loc_V, %tmp_16
+
+ST_2: tmp_20 [1/1] 0.00ns (grouped into LUT with out node p_Result_s)
+:16  %tmp_20 = call i48 @llvm.part.select.i48(i48 %tmp_19, i32 47, i32 0)
+
+ST_2: tmp_21 [1/1] 0.00ns (grouped into LUT with out node p_Result_s)
+:17  %tmp_21 = select i1 %tmp_7, i48 %tmp_20, i48 %tmp_19
+
+ST_2: tmp_22 [1/1] 0.00ns (grouped into LUT with out node p_demorgan3)
+:18  %tmp_22 = shl i48 -1, %tmp_17
+
+ST_2: tmp_23 [1/1] 0.00ns (grouped into LUT with out node p_demorgan3)
+:19  %tmp_23 = lshr i48 -1, %tmp_18
+
+ST_2: p_demorgan3 [1/1] 1.37ns (out node of the LUT)
+:20  %p_demorgan3 = and i48 %tmp_22, %tmp_23
+
+ST_2: tmp_24 [1/1] 0.00ns (grouped into LUT with out node p_Result_s)
+:21  %tmp_24 = xor i48 %p_demorgan3, -1
+
+ST_2: tmp_25 [1/1] 0.00ns (grouped into LUT with out node p_Result_s)
+:22  %tmp_25 = and i48 %p_Val2_s, %tmp_24
+
+ST_2: tmp_26 [1/1] 0.00ns (grouped into LUT with out node p_Result_s)
+:23  %tmp_26 = and i48 %tmp_21, %p_demorgan3
+
+ST_2: p_Result_s [1/1] 1.37ns (out node of the LUT)
+:24  %p_Result_s = or i48 %tmp_25, %tmp_26
+
+ST_2: stg_99 [1/1] 0.00ns
+:25  store i48 %p_Result_s, i48* @curr_header_dest_MAC_V, align 8
+
+ST_2: stg_100 [1/1] 0.00ns
+mergeST:2  br label %._crit_edge90
+
+ST_2: stg_101 [1/1] 0.00ns
+._crit_edge90:0  ret void
 
 
 
@@ -266,14 +386,13 @@ ST_2: stg_61 [1/1] 0.00ns
 ============================================================
 Target clock period: 8ns, clock uncertainty: 1ns.
 
- <State 1>: 7.88ns
+ <State 1>: 7.7ns
 The critical path consists of the following:
-	'load' operation ('byte_cnt_load', pie_hls/solution1/frameSIPO.cpp:48) on static variable 'byte_cnt' (0 ns)
-	'add' operation ('p_off', pie_hls/solution1/frameSIPO.cpp:80) (2.44 ns)
-	'partselect' operation ('tmp_2', pie_hls/solution1/frameSIPO.cpp:80) (0 ns)
-	'icmp' operation ('icmp', pie_hls/solution1/frameSIPO.cpp:80) (2.5 ns)
-	'or' operation ('tmp_1', pie_hls/solution1/frameSIPO.cpp:80) (1.37 ns)
-	'store' operation (pie_hls/solution1/frameSIPO.cpp:85) of variable 'tmp_1', pie_hls/solution1/frameSIPO.cpp:80 on static variable 'CNT_STATE' (1.57 ns)
+	'load' operation ('byte_cnt_load', pie_hls/solution1/frameSIPO.cpp:41) on static variable 'byte_cnt' (0 ns)
+	'add' operation ('tmp_5', pie_hls/solution1/frameSIPO.cpp:41) (2.44 ns)
+	'icmp' operation ('tmp_4', pie_hls/solution1/frameSIPO.cpp:56) (2.52 ns)
+	multiplexor before 'phi' operation ('CNT_STATE_new_4') (1.57 ns)
+	blocking operation 1.17 ns on control path)
 
 
 ============================================================

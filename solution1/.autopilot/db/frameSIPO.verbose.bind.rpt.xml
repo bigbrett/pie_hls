@@ -1,7 +1,7 @@
 <profile>
 
 <section name = "Vivado HLS Report for 'frameSIPO'" level="0">
-<item name = "Date">Thu Sep  1 12:30:46 2016
+<item name = "Date">Fri Sep  2 10:04:03 2016
 </item>
 <item name = "Version">2016.2 (Build 1577090 on Thu Jun 02 16:59:10 MDT 2016)</item>
 <item name = "Project">pie_hls</item>
@@ -15,7 +15,7 @@
 <section name = "" level="1">
 <item name = "Summary"><table name="" hasTotal="0">
 <keys size="4">Clock, Target, Estimated, Uncertainty</keys>
-<column name="ap_clk">8.00, 7.88, 1.00</column>
+<column name="ap_clk">8.00, 7.70, 1.00</column>
 </table>
 </item>
 </section>

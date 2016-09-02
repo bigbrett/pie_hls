@@ -3,7 +3,6 @@
 
 
 void frameSIPO(stream<axiByte> &inData,
-			   uint8_t* header,
-			   uint1* livewire);
+			   stream<ethHeader> &headerData);
 
 #endif //ifdef

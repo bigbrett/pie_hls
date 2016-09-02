@@ -1,0 +1,8 @@
+vhdl xil_defaultlib "AESL_sim_pkg.vhd"
+vhdl xil_defaultlib "AESL_axi_s_headerData_V_dest_MAC_V.vhd"
+vhdl xil_defaultlib "AESL_axi_s_inData.vhd"
+vhdl xil_defaultlib "AESL_axi_s_headerData_V_src_MAC_V.vhd"
+vhdl xil_defaultlib "AESL_axi_s_headerData_V_ethertype_V.vhd"
+vhdl xil_defaultlib "frameSIPO.autotb.vhd"
+vhdl xil_defaultlib "frameSIPO.vhd"
+

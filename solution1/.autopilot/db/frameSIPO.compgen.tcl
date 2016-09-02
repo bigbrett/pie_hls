@@ -45,35 +45,62 @@ puts "@W \[IMPL-110\] Cannot find bus interface model in the library. Ignored ge
 }
 
 
-# Direct connection:
+# Native AXIS:
 if {${::AESL::PGuard_autoexp_gen}} {
-eval "cg_default_interface_gen_dc { \
+if {[info proc ::AESL_LIB_XILADAPTER::native_axis_add] == "::AESL_LIB_XILADAPTER::native_axis_add"} {
+eval "::AESL_LIB_XILADAPTER::native_axis_add { \
     id 3 \
-    name header \
-    type other \
-    dir O \
+    name headerData_V_src_MAC_V \
     reset_level 0 \
     sync_rst true \
-    corename dc_header \
+    corename {} \
+    metadata {  } \
     op interface \
-    ports { header { O 8 vector } header_ap_vld { O 1 bit } } \
+    ports { headerData_V_src_MAC_V_TREADY { I 1 bit } headerData_V_src_MAC_V_TDATA { O 48 vector } headerData_V_src_MAC_V_TVALID { O 1 bit } } \
 } "
+} else {
+puts "@W \[IMPL-110\] Cannot find bus interface model in the library. Ignored generation of bus interface for 'headerData_V_src_MAC_V'"
+}
 }
 
-# Direct connection:
+
+# Native AXIS:
 if {${::AESL::PGuard_autoexp_gen}} {
-eval "cg_default_interface_gen_dc { \
+if {[info proc ::AESL_LIB_XILADAPTER::native_axis_add] == "::AESL_LIB_XILADAPTER::native_axis_add"} {
+eval "::AESL_LIB_XILADAPTER::native_axis_add { \
     id 4 \
-    name livewire \
-    type other \
-    dir O \
+    name headerData_V_dest_MAC_V \
     reset_level 0 \
     sync_rst true \
-    corename dc_livewire \
+    corename {} \
+    metadata {  } \
     op interface \
-    ports { livewire { O 1 vector } livewire_ap_vld { O 1 bit } } \
+    ports { headerData_V_dest_MAC_V_TDATA { O 48 vector } headerData_V_dest_MAC_V_TVALID { O 1 bit } headerData_V_dest_MAC_V_TREADY { I 1 bit } } \
 } "
+} else {
+puts "@W \[IMPL-110\] Cannot find bus interface model in the library. Ignored generation of bus interface for 'headerData_V_dest_MAC_V'"
 }
+}
+
+
+# Native AXIS:
+if {${::AESL::PGuard_autoexp_gen}} {
+if {[info proc ::AESL_LIB_XILADAPTER::native_axis_add] == "::AESL_LIB_XILADAPTER::native_axis_add"} {
+eval "::AESL_LIB_XILADAPTER::native_axis_add { \
+    id 5 \
+    name headerData_V_ethertype_V \
+    reset_level 0 \
+    sync_rst true \
+    corename {} \
+    metadata {  } \
+    op interface \
+    ports { headerData_V_ethertype_V_TDATA { O 16 vector } headerData_V_ethertype_V_TVALID { O 1 bit } headerData_V_ethertype_V_TREADY { I 1 bit } } \
+} "
+} else {
+puts "@W \[IMPL-110\] Cannot find bus interface model in the library. Ignored generation of bus interface for 'headerData_V_ethertype_V'"
+}
+}
+
 
 # Direct connection:
 if {${::AESL::PGuard_autoexp_gen}} {
